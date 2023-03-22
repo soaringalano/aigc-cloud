@@ -1,5 +1,5 @@
-# **aigc-cloud**
-**AIGC-CLOUD is a platform that allows individuals or organizations to train and generate all popular AI generated content, such as STALBE-DIFFUSION, DIFFUSERS, DALLE, CHATGPT, etc.**
+# **AIGC-CLOUD**
+**aigc-cloud is a platform that allows individuals or organizations to train and generate all popular AI generated content, such as STALBE-DIFFUSION, DIFFUSERS, DALLE, CHATGPT, etc.**
 
 ## *preparation of environment:*
 
