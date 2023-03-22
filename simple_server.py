@@ -1,5 +1,3 @@
-import json
-
 from cluster.clustermanager import (ClusterManager, ClusterNode, Cluster, NodeType, NodeState)
 import flask
 from task.task_executor import *
