@@ -93,12 +93,12 @@ def execute_task():
         if 'model_path' in content:
             _model_path = content['model_path']
         if 'base' in content:
-            _config_predef = content['base']
+            _base = content['base']
         if 'yaml_content' in content:
             _yaml_content = content['yaml_content']
 
         if _task_type is None or _task_name is None or _cluster_id is None or \
-            _dataset_path is None or _model_path is None or _config_predef is None:
+            _dataset_path is None or _model_path is None or _base is None:
             error = f"there are one or more error in the parameters, please check again"
 
         task_type = TaskType(_task_type)
