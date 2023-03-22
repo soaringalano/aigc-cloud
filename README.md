@@ -8,7 +8,7 @@ The platform contains two types of node: Server and Client. All client nodes are
 ## *prerequisite:*
 ### [Anaconda3](https://www.anaconda.com/download/) download the bash file and follow the instruction to finish the installation.
 
-###[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)<br/>
+### [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)<br/>
 ```
 sudo apt update & apt install git-all
 ```
