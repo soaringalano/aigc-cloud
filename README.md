@@ -3,20 +3,18 @@
 <p/>
 preparation of environment:<p/>
 <p/>
-The platform contains two types of node: Server and Client. All client nodes are in charge of the execution of the tasks, which generally contain TRAIN,  GENERATE, TERMINATE.<p/>
+The platform contains two types of node: Server and Client. All client nodes are in charge of the execution of the tasks, which generally contain **TRAIN**,  **GENERATE**, **TERMINATE**.<p/>
 <p/>
-**prerequisite:**<p/>
-*Anaconda3*: download install package from : https://www.anaconda.com/download/	
-and the follow the instruction to finish the installation.<p/>
-*Git*: sudo apt update & apt install git-all<p/>
-then you should follow instructions to finish the installation<p/>
+*prerequisite*:<p/>
+*Anaconda3*: download install package from : [Anaconda](https://www.anaconda.com/download/) and then follow the instruction to finish the installation.<p/>
+*Git*: execute in bash "*sudo apt update & apt install git-all*" then follow instructions to finish the installation<p/>
 <p/>
-		Stable-Diffusion : git clone https://github.com/CompVis/stable-diffusion.git<p/>
-		it is suggested to install and configure virtual environment following the official instruction of Stable-Diffusion, and activate the virtual environment named "ldm".<p/>
-		htps://github.com/CompVis/stable-diffusion<p/>
-		run "conda env create -f environment.yaml" and then "conda activate ldm", all requirements will be added to our project later.<p/>
-		<p/>
-		Diffusers: pip install --upgrade diffusers[torch]  or  conda install -c conda-forge diffusers<p/>
+[*Stable-Diffusion*](https://github.com/CompVis/stable-diffusion) : execute "*git clone https://github.com/CompVis/stable-diffusion.git*"<p/>
+it is suggested to install and configure virtual environment following the official instruction of Stable-Diffusion, and activate the virtual environment named "ldm".<p/>
+
+run '''conda env create -f environment.yaml''' and then '''conda activate ldm''', all requirements will be added to our project later.<p/>
+<p/>
+Diffusers: pip install --upgrade diffusers[torch]  or  conda install -c conda-forge diffusers<p/>
 		<p/>
 	run following cmd to download source code, you will have to be invited to the group because its a private repository.<p/>
 		git clone https://github.com/soaringalano/aigc-cloud.git<p/>
