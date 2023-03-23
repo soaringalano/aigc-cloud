@@ -7,13 +7,13 @@ The platform contains two types of node: Server and Client. All client nodes are
 
 ## *prerequisite:*
 ### [Anaconda3](https://www.anaconda.com/download/)
-download the bash file and follow the instruction to finish the installation.
+download the bash file and follow the instruction to complete the installation.
 
 ### [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)<br/>
 ```
 sudo apt update & apt install git-all
 ```
-then follow instructions to finish the installation
+then follow instructions to complete the installation
 
 ### [Stable-Diffusion](https://github.com/CompVis/stable-diffusion)<br/>
 ```
@@ -25,7 +25,7 @@ it is suggested to install and configure virtual environment following the offic
 conda env create -f environment.yaml
 conda activate ldm
 ```
-all requirements will be added to our project later.
+*all requirements will be added to our project later.*
 
 ### [Diffusers](https://github.com/huggingface/diffusers)<br/>
 ```
