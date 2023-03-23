@@ -1,0 +1,6 @@
+name: aigc-cloud
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:

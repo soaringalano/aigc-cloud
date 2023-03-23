@@ -1,3 +1,5 @@
+import os
+
 from cluster.clustermanager import (ClusterManager, ClusterNode, Cluster, NodeType, NodeState)
 import flask
 from task.task_executor import *
@@ -117,8 +119,9 @@ def execute_task():
 
 
 if __name__ == "__main__":
-    # port = os.environ['SERVER_PORT']
-    cloudservice.run(host="localhost", port=int(8088), debug=True)
+    addr = os.environ['SERVER_ADDR']
+    port = os.environ['SERVER_PORT']
+    cloudservice.run(host=addr, port=int(port), debug=True)
 
 
 

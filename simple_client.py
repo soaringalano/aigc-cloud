@@ -10,10 +10,6 @@ from task.task_config import BasicTaskConfig
 
 cloud_client = Flask(__name__)
 
-current_proc: Popen = None
-
-current_task: str = None
-
 
 @cloud_client.route('/', methods=['POST', 'GET'])
 def cloud_home():
@@ -21,7 +17,7 @@ def cloud_home():
 
 
 @cloud_client.route('/task', methods=['POST', 'GET'])
-def execute_task(self) -> (str, int):
+def execute_task() -> (str, int):
     print("executing local task for remote request")
     if request.data is None:
         return "no argument found", 400
@@ -37,13 +33,11 @@ def execute_task(self) -> (str, int):
     config = BasicTaskConfig()
     config.set_params(content)
     res = execute_local_task(config)
-    self.current_proc = res.process()
-    self.current_task = res.task_id()
     return res.to_json(), 200
 
 
 @cloud_client.route('/stat', methods=['POST', 'GET'])
-def check_state() -> (str, int):
+def check_state(self) -> (str, int):
     print("checking local task state for remote request")
     if request.data is None:
         return "no argument found", 400
@@ -60,8 +54,8 @@ def check_state() -> (str, int):
     msg = {"task_id": task_id, "stdout": "", "stderr": ""}
     # stdout = self.current_proc.stdout
     # stderr = self.current_proc.stderr
-    outbuf = None if current_proc.stdout is None else StringIO(current_proc.stdout)
-    errbuf = None if current_proc.stderr is None else StringIO(current_proc.stderr)
+    outbuf = None if self.current_proc.stdout is None else StringIO(self.current_proc.stdout)
+    errbuf = None if self.current_proc.stderr is None else StringIO(self.current_proc.stderr)
     now = time.time()
     while round(1000*(time.time() - now)) <= period:
         if outbuf is not None:

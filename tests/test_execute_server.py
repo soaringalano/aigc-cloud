@@ -49,9 +49,59 @@ import requests
 import json
 
 
-def execute_task():
+def execute_train():
 
-    url = "http://localhost:8088/task"
+    url = "http://192.168.1.26:8088/task"
+
+    post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
+                " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
+                " \"cluster_id\": \"docker_cluster_1\", \"dataset_path\": \"runwayml/stable-diffusion-v1-5\"," \
+                " \"model_path\": \"/home/ldm/models/\"," \
+                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
+                " \"base\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
+                " \"yaml_content\": \"{}\"}"
+    print(post_data)
+    print(json.loads(post_data))
+
+    headers = {'Content-type': 'application/json'}
+    response = requests.post(url=url, data=post_data, params=post_data, headers=headers)
+
+    if response.ok:
+        print("all done!")
+        print(response.headers, response.content, response.text, response.json())
+    else:
+        print("error")
+        print(response.content)
+
+
+def execute_generate():
+
+    url = "http://192.168.1.26:8088/task"
+
+    post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
+                " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
+                " \"cluster_id\": \"docker_cluster_1\", \"dataset_path\": \"runwayml/stable-diffusion-v1-5\"," \
+                " \"model_path\": \"/home/ldm/models/\"," \
+                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
+                " \"base\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
+                " \"yaml_content\": \"{}\"}"
+    print(post_data)
+    print(json.loads(post_data))
+
+    headers = {'Content-type': 'application/json'}
+    response = requests.post(url=url, data=post_data, params=post_data, headers=headers)
+
+    if response.ok:
+        print("all done!")
+        print(response.headers, response.content, response.text, response.json())
+    else:
+        print("error")
+        print(response.content)
+
+
+def execute_status():
+
+    url = "http://192.168.1.26:8088/stat"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
@@ -74,7 +124,7 @@ def execute_task():
         print(response.content)
 
 def execute_login():
-    url = "http://localhost:8088/login"
+    url = "http://192.168.1.26:8088/login"
     post_data = "{\"username\":\"soaringalano_cx\", \"password\":\"123456\"}"
     response = requests.post(url=url, data=post_data)
     print(response.content, response.headers, response.status_code, response.text)
@@ -82,4 +132,4 @@ def execute_login():
 
 # execute_login()
 
-execute_task()
+execute_train()
