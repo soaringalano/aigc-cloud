@@ -13,6 +13,7 @@ class TaskType(Enum):
 class TaskGoal(Enum):
     train = "train"
     generate = "generate"
+    status = "status"
     terminate = "terminate"
     suspend = "suspend"
 

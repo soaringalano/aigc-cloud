@@ -104,7 +104,7 @@ def execute_status():
     url = "http://192.168.1.26:8088/stat"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
-                " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
+                " \"task_goal\": \"status\", \"task_name\": \"testtask\"," \
                 " \"cluster_id\": \"docker_cluster_1\", \"dataset_path\": \"runwayml/stable-diffusion-v1-5\"," \
                 " \"model_path\": \"/home/ldm/models/\"," \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \

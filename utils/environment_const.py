@@ -68,6 +68,7 @@ SYSTEM_DIFFUSERS_PATH = "/home/soaringalano/source/diffusers/"
 
 CLUSTER_RESTFUL_API_TEMPLATE = "http://{host_address}:{host_port}/task"
 
+JSON_HEADERS = {'Content-type': 'application/json'}
 
 def init_local_info(self) -> Dict:
     hostname = socket.gethostname()

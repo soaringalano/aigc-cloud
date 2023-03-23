@@ -82,31 +82,31 @@ def execute_task():
             content = request.json
         else:
             content = flask.json.loads(request.data)
-        if 'task_id' in content:
-            _task_id = content['task_id']
-        if 'task_name' in content:
-            _task_name = content['task_name']
-        if 'task_type' in content:
-            _task_type = content['task_type']
-        if 'cluster_id' in content:
-            _cluster_id = content['cluster_id']
-        if 'dataset_path' in content:
-            _dataset_path = content['dataset_path']
-        if 'model_path' in content:
-            _model_path = content['model_path']
-        if 'base' in content:
-            _base = content['base']
-        if 'yaml_content' in content:
-            _yaml_content = content['yaml_content']
-
-        if _task_type is None or _task_name is None or _cluster_id is None or \
-            _dataset_path is None or _model_path is None or _base is None:
-            error = f"there are one or more error in the parameters, please check again"
-
-        task_type = TaskType(_task_type)
-        if task_type not in TaskType:
-            error = f"{'exception':'unknown task type %s, please check your selection'}" % _task_type;
-            return error, 200
+        # if 'task_id' in content:
+        #     _task_id = content['task_id']
+        # if 'task_name' in content:
+        #     _task_name = content['task_name']
+        # if 'task_type' in content:
+        #     _task_type = content['task_type']
+        # if 'cluster_id' in content:
+        #     _cluster_id = content['cluster_id']
+        # if 'dataset_path' in content:
+        #     _dataset_path = content['dataset_path']
+        # if 'model_path' in content:
+        #     _model_path = content['model_path']
+        # if 'base' in content:
+        #     _base = content['base']
+        # if 'yaml_content' in content:
+        #     _yaml_content = content['yaml_content']
+        #
+        # if _task_type is None or _task_name is None or _cluster_id is None or \
+        #     _dataset_path is None or _model_path is None or _base is None:
+        #     error = f"there are one or more error in the parameters, please check again"
+        #
+        # task_type = TaskType(_task_type)
+        # if task_type not in TaskType:
+        #     error = f"{'exception':'unknown task type %s, please check your selection'}" % _task_type;
+        #     return error, 200
 
         config = BasicTaskConfig()
         config.set_params(content)
@@ -116,6 +116,7 @@ def execute_task():
         return json.dumps(res), 200
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
+
 
 
 if __name__ == "__main__":

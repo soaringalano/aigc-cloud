@@ -3,7 +3,7 @@ import subprocess
 import requests
 import yaml
 import json
-from .task_config import (TaskType,
+from task_config import (TaskType,
                          TaskGoal,
                          BasicTaskConfig,
                          TerminateTaskConfig,
@@ -225,6 +225,8 @@ def execute_cluster_stable_diffusion_task(task_config: BasicTaskConfig,
             pass
         elif task_goal == TaskGoal.terminate.value:
             pass
+        elif task_goal == TaskGoal.status.value:
+            pass
         else:
             pass
     else:  # if multi nodes exist
@@ -276,7 +278,6 @@ def execute_node_stable_diffusion_train(rank: int,
     print("executing node stable diffusion train task")
     host_address = cluster_node.node_address()
     host_port = cluster_node.node_port()
-    api_cmd = config[BasicTaskConfig.task_goal]
     accelerator = ENVKEY_ACCELERATOR_AUTO if rank < 0 else ENVKEY_ACCELERATOR_DDP
     if rank == -1 or is_master and master_node is not None:
         master_addr = master_node.node_address()
@@ -302,13 +303,12 @@ def execute_node_stable_diffusion_train(rank: int,
                                      host_port=host_port)
     print(f"restful-url is %s" % restful_url)
     print(f"data is %s" % json.dumps(params))
-    headers = {'Content-type': 'application/json'}
+    param_str = json.dumps(params)
     response = requests.post(restful_url,
-                             data=json.dumps(params),
-                             params=json.dumps(params),
-                             headers=headers)
+                             data=param_str,
+                             params=param_str,
+                             headers=JSON_HEADERS)
     status_code = response.status_code
-    # json = response.json()
     content = response.content
     print(content)
     success = status_code == 200
@@ -316,35 +316,23 @@ def execute_node_stable_diffusion_train(rank: int,
 
 
 def execute_node_stable_diffusion_generate(config: BasicTaskConfig,
-                                           # n_samples: int, #must, default 1
-                                           # prompt: str, #must
-                                           # W: int,
-                                           # H: int,
-                                           # config: str,
-                                           # output_dir: str,
-                                           # ckpt: str,
                                            node: ClusterNode) -> (bool, str):
     print("executing cluster stable diffusion generate task")
     host_address = node.node_address()
     host_port = node.node_port()
-    api_cmd = TaskGoal.generate.value
     restful_url = CLUSTER_RESTFUL_API_TEMPLATE
-    # params = {}
-    # if n_samples is not None: params[StableDiffusionGenerateConfig.n_samples] = n_samples
-    # if prompt is not None: params[StableDiffusionGenerateConfig.prompt] = prompt
-    # if W is not None: params[StableDiffusionGenerateConfig.W] = W
-    # if H is not None: params[StableDiffusionGenerateConfig.H] = H
-    # if config is not None: params[StableDiffusionGenerateConfig.config] = config
-    # if output_dir is not None: params[StableDiffusionGenerateConfig.outdir] = output_dir
-    # if ckpt is not None: params[StableDiffusionGenerateConfig.ckpt] = ckpt
-    response = requests.post(restful_url.format(host_address=host_address,
-                                                host_port=host_port,
-                                                api_cmd=api_cmd),
-                             params=config)
+
+    restful_url = restful_url.format(host_address=host_address,
+                                     host_port=host_port)
+    param_str = json.dumps(config)
+    response = requests.post(restful_url,
+                             params=param_str,
+                             data=param_str,
+                             headers=JSON_HEADERS)
     status_code = response.status_code
-    json = response.json()
+    content = response.content
     success = status_code == 200
-    return success, json
+    return success, "{\"content\": %s}" % content
 
 
 def execute_cluster_diffuser_task(task_config: BasicTaskConfig,
