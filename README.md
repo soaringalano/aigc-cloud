@@ -13,7 +13,7 @@ download the bash file and follow the instruction to complete the installation.
 ```
 sudo apt update & apt install git-all
 ```
-then follow instructions to complete the installation
+then follow the instruction to complete the installation
 
 ### [Stable-Diffusion](https://github.com/CompVis/stable-diffusion)<br/>
 ```
