@@ -8,3 +8,5 @@ temp/
 
 #ignore user config
 /user_config.yaml
+
+.docker-conf/
