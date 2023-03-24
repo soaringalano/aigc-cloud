@@ -12,3 +12,6 @@ temp/
 .docker-conf/git
 
 .idea/
+
+__pycache__/
+
