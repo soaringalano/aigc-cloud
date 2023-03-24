@@ -17,6 +17,7 @@ from subprocess import Popen
 from typing import Dict
 from enum import Enum
 import sys
+from utils.public_cdn_utils import *
 
 
 class TaskState(Enum):
@@ -106,15 +107,29 @@ def execute_local_task(task_config: BasicTaskConfig = None) -> TaskResult:
     local_executable_shell = select_local_executable_shell(task_config)
     with subprocess.Popen(args=local_executable_shell,
                           shell=True,
-                          stdout=sys.stdout, #subprocess.PIPE,
-                          stderr=sys.stderr, #subprocess.PIPE,
+                          stdout=subprocess.PIPE,
+                          stderr=subprocess.PIPE,
                           env=envvar,
                           cwd=envvar["SOURCE_HOME"]) as proc:
 
         return TaskResult(TaskState.SUBMITTED,
                           proc,
                           task_config[BasicTaskConfig.task_id],
-                          "{\"msg\":\"Task is planned to run, please check the state later.\"")
+                          "{\"msg\":\"Task is planned to run, please check the status later.\"")
+
+
+def execute_post_process(task_config: BasicTaskConfig = None) -> TaskResult:
+    if task_config[BasicTaskConfig.task_goal] == TaskGoal.generate.value:
+        return __execute_upload_cdn(task_config)
+
+
+def __execute_upload_cdn(outdir:str, task_id:str):
+    ok, succ_fail = store_dir_images_as_nft(outdir)
+    if ok:
+        success: List[NFT] = succ_fail['success']
+        fail: List[str] = succ_fail['fail']
+
+
 
 
 def select_local_executable_shell(config: BasicTaskConfig) -> str:
@@ -202,7 +217,7 @@ def execute_cluster_stable_diffusion_task(task_config: BasicTaskConfig,
                           state=TaskState.NOTEXIST,
                           process=None,
                           additional_msg=f"No available node to execute task %s on cluster %s"
-                                         % task_id % cluster_id)
+                                         % (task_id, cluster_id))
     if cluster.cluster_size() == 1:  # if the cluster contains only one node
         print("executing cluster size 1 stable diffusion task")
         node = list(cluster.general_nodes().values())[0]

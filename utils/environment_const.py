@@ -42,7 +42,8 @@ SHELL_STABLE_DIFFUSION_TRAIN = \
     "--logger=\"true\" --num_nodes=\"{num_nodes}\""
 SHELL_STABLE_DIFFUSION_GENERATE = "python -u scripts/txt2img.py " \
                                   "--prompt \"{prompt}\" --outdir \"{outdir}\" --n_sample \"{n_sample}\" " \
-                                  "--H \"{H}\" --W \"{W}\" --config \"{config}\" --ckpt \"{ckpt}\""
+                                  "--H \"{H}\" --W \"{W}\" --config \"{config}\" --ckpt \"{ckpt}\"\n" \
+                                  ""
 SHELL_DIFFUSERS_TRAIN = ""
 SHELL_DIFFUSERS_GENERATE = ""
 SHELL_DALLE_TRAIN = ""

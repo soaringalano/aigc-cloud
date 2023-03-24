@@ -36,7 +36,7 @@ def store_image_as_nft(file:str) -> (bool, Union[str, NFT]):
             return False, "{\"err\": %s}" % e
 
 
-def store_dir_images_as_nft(dir:str) -> (bool, Dict[str, Union[List[str], List[NFT]]]):
+def store_dir_images_as_nft(dir: str) -> (bool, Dict[str, Union[List[str], List[NFT]]]):
     with nft_storage.ApiClient(configuration=configuration) as api_client:
         api_instance = nft_storage_api.NFTStorageAPI(api_client=api_client)
         success = []
@@ -61,8 +61,8 @@ def store_dir_images_as_nft(dir:str) -> (bool, Dict[str, Union[List[str], List[N
 
 
 def test_store_file():
-    file = "/home/linmao/workspaces/data/output/underdog/2-100/images"
-    ok, nft = store_dir_images_as_nft(file)
+    file = "..\\1.jpg"
+    ok, nft = store_image_as_nft(file)
     if ok:
         print("upload ok, cid is %s" % json.dumps(nft.cid))
     else:
