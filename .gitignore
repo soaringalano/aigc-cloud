@@ -1,0 +1,10 @@
+#ignore all .log files
+*.log
+#ignore all .key config files
+*.key
+#ignore all temp dir
+*.tmp
+temp/
+
+#ignore user config
+/user_config.yaml
