@@ -20,6 +20,7 @@ class TaskGoal(Enum):
 
 class BasicTaskConfig(Dict):
     task_id = "task_id"
+    user_id = "user_id"
     cluster_id = "cluster_id"
     task_type = "task_type"
     task_goal = "task_goal"
