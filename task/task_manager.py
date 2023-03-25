@@ -77,6 +77,16 @@ class TaskManager:
         with open(task_file_prefix + _id_task_suffix, "w") as all_tasks_file:
             json.dumps(self.__all_tasks, all_tasks_file, indent=4)
 
+    def list_user_tasks(self, user_id: str) -> List[str]:
+        if user_id in self.__user_tasks.keys():
+            return self.__user_tasks[user_id]
+        return None
+
+    def get_task(self, task_id: str) -> Task:
+        if task_id in self.__all_tasks.keys():
+            return self.__all_tasks[task_id]
+        return None
+
     def add_task(self,
                  task_config: BasicTaskConfig,
                  task_result: TaskResult = None):

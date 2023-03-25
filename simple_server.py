@@ -75,7 +75,7 @@ def login():
     return msg, 200
 
 
-@cloudservice.route('/addtask', methods=['POST'])
+@cloudservice.route('/newtask', methods=['POST'])
 def execute_task():
     error = None
     if request.method == 'POST':
@@ -107,7 +107,26 @@ def execute_task():
 
 @cloudservice.route('/listtask', methods=['POST'])
 def execute_listtask():
-    error = None
+    if request.method == 'POST':
+        content_type = request.headers.get('Content-Type')
+        content = request.data
+        print(f"===content %s ========json====" % content)
+        if content_type == 'application/json':
+            content = request.json
+        else:
+            content = flask.json.loads(request.data)
+
+        user_id = content[BasicTaskConfig.user_id]
+        task_ids = taskMan.list_user_tasks(user_id)
+        if task_ids is None:
+            return json.dump("{}"), 200
+        return json.dumps(task_ids), 200
+    else:
+        return "{\"error msg\": \"only post request can be responded\"}", 400
+
+
+@cloudservice.route('/gettask', methods=['POST'])
+def execute_gettask():
     if request.method == 'POST':
         content_type = request.headers.get('Content-Type')
         content = request.data
@@ -118,12 +137,12 @@ def execute_listtask():
             content = flask.json.loads(request.data)
 
         task_id = content[BasicTaskConfig.task_id]
-        user_id = content[BasicTaskConfig.user_id]
-
-        return json.dumps(res), 200
+        task = taskMan.get_task(task_id)
+        if task is None:
+            return json.dump("{}"), 200
+        return json.dumps(task), 200
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
-
 
 
 if __name__ == "__main__":
