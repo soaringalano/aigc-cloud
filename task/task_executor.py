@@ -110,7 +110,7 @@ def execute_local_task(task_config: BasicTaskConfig = None) -> TaskResult:
                           stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE,
                           env=envvar,
-                          cwd=envvar["SOURCE_HOME"]) as proc:
+                          cwd=envvar[SYSTEM_SOURCE_HOME]) as proc:
 
         return TaskResult(TaskState.SUBMITTED,
                           proc,

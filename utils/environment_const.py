@@ -63,6 +63,8 @@ ENVKEY_ACCELERATOR_GPU = "gpu"
 ENVKEY_ACCELERATOR_TPU = "tpu"
 ENVKEY_ACCELERATOR_AUTO = "auto"
 
+SYSTEM_SOURCE_HOME = "SOURCE_HOME"
+SYSTEM_SERVER_TASK_FILE_PREFIX = "/tasks"
 SYSTEM_STABLE_DIFFUSION_PATH = "/home/soaringalano/source/stable-diffusion/"
 SYSTEM_DIFFUSERS_PATH = "/home/soaringalano/source/diffusers/"
 
