@@ -75,7 +75,7 @@ def login():
     return msg, 200
 
 
-@cloudservice.route('/task', methods=['POST'])
+@cloudservice.route('/addtask', methods=['POST'])
 def execute_task():
     error = None
     if request.method == 'POST':
@@ -100,6 +100,26 @@ def execute_task():
 
         res = execute_cluster_task(task_config=config, cluster_manager=clusterMan)
         print(res)
+        return json.dumps(res), 200
+    else:
+        return "{\"error msg\": \"only post request can be responded\"}", 400
+
+
+@cloudservice.route('/listtask', methods=['POST'])
+def execute_listtask():
+    error = None
+    if request.method == 'POST':
+        content_type = request.headers.get('Content-Type')
+        content = request.data
+        print(f"===content %s ========json====" % content)
+        if content_type == 'application/json':
+            content = request.json
+        else:
+            content = flask.json.loads(request.data)
+
+        task_id = content[BasicTaskConfig.task_id]
+        user_id = content[BasicTaskConfig.user_id]
+
         return json.dumps(res), 200
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
