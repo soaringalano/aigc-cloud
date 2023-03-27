@@ -3,7 +3,7 @@
 
 ## *preparation of environment:*
 
-The platform contains two types of node: Server and Client. All client nodes are in charge of the execution of the tasks, which generally contain  **TRAIN**,  **GENERATE**, **TERMINATE**.
+The platform contains two types of node: Server and Client. All client nodes are in charge of the execution of the tasks, which generally contain  **TRAIN**,  **GENERATE**, **TERMINATE**; while server node is in charge of the distribution of tasks.
 
 ## *prerequisite:*
 ### [Anaconda3](https://www.anaconda.com/download/)
