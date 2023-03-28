@@ -44,12 +44,16 @@ SHELL_STABLE_DIFFUSION_GENERATE = "python -u scripts/txt2img.py " \
                                   "--prompt \"{prompt}\" --outdir \"{outdir}\" --n_sample \"{n_sample}\" " \
                                   "--H \"{H}\" --W \"{W}\" --config \"{config}\" --ckpt \"{ckpt}\"\n" \
                                   ""
+
 SHELL_DIFFUSERS_TRAIN = ""
 SHELL_DIFFUSERS_GENERATE = ""
+
 SHELL_DALLE_TRAIN = ""
 SHELL_DALLE_GENERATE = ""
+
 SHELL_CHATGPT_TRAIN = ""
 SHELL_CHATGPT_GENERATE = ""
+
 SHELL_TERMINATE_TASK = "kill -n {pid}}"
 
 ENVKEY_LOCAL_ADDRESS = "IP"

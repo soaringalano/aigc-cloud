@@ -119,7 +119,9 @@ def execute_listtask():
         user_id = content[BasicTaskConfig.user_id]
         task_ids = taskMan.list_user_tasks(user_id)
         if task_ids is None:
-            return json.dump("{}"), 200
+            return json.dump(
+                    "{errmsg: \"No task for user %s, please check your input\"}" % user_id),\
+                    200
         return json.dumps(task_ids), 200
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
@@ -139,11 +141,55 @@ def execute_gettask():
         task_id = content[BasicTaskConfig.task_id]
         task = taskMan.get_task(task_id)
         if task is None:
-            return json.dump("{}"), 200
+            return json.dump(
+                    "{errmsg: \"No such task with id %s, please check your input\"}" % task_id),\
+                    200
         return json.dumps(task), 200
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
 
+
+@cloudservice.route('/taskstat', methods=['POST'])
+def execute_status_task():
+    if request.method == 'POST':
+        content_type = request.headers.get('Content-Type')
+        content = request.data
+        print(f"===content %s ========json====" % content)
+        if content_type == 'application/json':
+            content = request.json
+        else:
+            content = flask.json.loads(request.data)
+
+        task_id = content[BasicTaskConfig.task_id]
+        task = taskMan.get_task(task_id)
+        if task is None:
+            return json.dump(
+                    "{errmsg: \"No such task with id %s, please check your input\"}" % task_id),\
+                    200
+        return json.dumps(task.task_result), 200
+    else:
+        return "{\"error msg\": \"only post request can be responded\"}", 400
+
+@cloudservice.route('/clusterstat', methods=['POST'])
+def execute_status_task():
+    if request.method == 'POST':
+        content_type = request.headers.get('Content-Type')
+        content = request.data
+        print(f"===content %s ========json====" % content)
+        if content_type == 'application/json':
+            content = request.json
+        else:
+            content = flask.json.loads(request.data)
+
+        cluster_id = content[BasicTaskConfig.cluster_id]
+        cluster = clusterMan.get_cluster(cluster_id=cluster_id)
+        if cluster is None:
+            return json.dump(
+                    "{errmsg: \"No such cluster with id %s, please check your input\"}" % cluster_id),\
+                    200
+        return json.dumps(task.task_result), 200
+    else:
+        return "{\"error msg\": \"only post request can be responded\"}", 400
 
 if __name__ == "__main__":
     addr = os.environ['SERVER_ADDR']

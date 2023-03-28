@@ -19,6 +19,7 @@ class Task:
         self.task_config = task_config
         self.task_result = task_result.to_dict()
         return
+
     #
     # def user_id(self) -> str:
     #     return self.user_id

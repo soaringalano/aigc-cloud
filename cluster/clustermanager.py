@@ -95,30 +95,16 @@ class Cluster:
     def __init__(self,
                  cluster_id: Union[int, str] = None,
                  cluster_name: str = None,
-                 # master_node: ClusterNode = None,
-                 # slave_nodes: Dict[int, ClusterNode] = None,
                  general_nodes: Dict[int, ClusterNode] = None) -> None:
-        # self._master_node = master_node
-        # self._slave_nodes = slave_nodes
         self._general_nodes = general_nodes
         self._cluster_id = cluster_id
         self._cluster_name = cluster_name
         return
 
-    # def master_node(self) -> ClusterNode:
-    #     return self._master_node
-    #
-    # def slave_nodes(self) -> Dict[int, ClusterNode]:
-    #     return self._slave_nodes
-    
     def general_nodes(self) -> Dict[int, ClusterNode]:
         return self._general_nodes
 
     def contains_node(self, node_uuid: int) -> bool:
-        # if self._master_node is not None and self._master_node.node_uuid() == node_uuid:
-        #     return True
-        # if self._slave_nodes is not None and node_uuid in self._slave_nodes.keys():
-        #     return True
         if self._general_nodes is not None and node_uuid in self._general_nodes.keys():
             return True
         return False
@@ -130,10 +116,6 @@ class Cluster:
         return self._cluster_name
 
     def cluster_size(self) -> int:
-        # m = 0 if self._master_node is None else 1
-        # n = 0 if self._slave_nodes is None else len(self._slave_nodes)
-        # k = 0 if self._general_nodes is None else len(self._general_nodes)
-        # return m+n+k
         return 0 if self._general_nodes is None else len(self._general_nodes)
 
     def get_random_node_uuid(self) -> int:
