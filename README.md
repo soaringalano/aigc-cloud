@@ -3,7 +3,7 @@
 
 ## *preparation of environment:*
 
-The platform contains two types of node: Server and Client. All client nodes are in charge of the execution of the tasks, which generally contain  **TRAIN**,  **GENERATE**, **TERMINATE**.
+The platform contains two types of node: Server and Client. All client nodes are in charge of the execution of the tasks, which generally contain  **TRAIN**,  **GENERATE**, **TERMINATE**; while server node is in charge of the distribution of tasks.
 
 ## *prerequisite:*
 ### [Anaconda3](https://www.anaconda.com/download/)
@@ -55,7 +55,7 @@ pip install -e requirements.txt
 you will find two executable python files under the root directory of the source code named "simple_client.py" and "simple_server.py".
 you will have to set environment variables to run them.
 
-### To run simple_lient.py:
+### To run simple_client.py:
 ```
 export CLIENT_ADDR=<IP address of the local machine or virtual machine or container>
 export CLIENT_PORT=<port of the local machine or virtual machine or container listened by the server>
