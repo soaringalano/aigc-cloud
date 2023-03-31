@@ -46,7 +46,7 @@ git clone https://github.com/soaringalano/aigc-cloud.git
 after having downloaded the source code, switch into the project directory, and run:
 
 ```
-pip install -e requirements.txt
+pip install -r requirements.txt
 ```
 
 
