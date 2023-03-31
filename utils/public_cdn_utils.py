@@ -11,7 +11,7 @@ from typing import Union, List, Dict
 import os
 import json
 
-with open("../nft_storage.key") as f:
+with open("nft_storage.key") as f:
     nft_storage_key = f.readline()
     print(nft_storage_key)
 
