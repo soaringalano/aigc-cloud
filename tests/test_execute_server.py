@@ -83,6 +83,7 @@ def execute_generate():
                 " \"cluster_id\": \"docker_cluster_1\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
+                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
                 " \"n_samples\": \"9\", \"H\": \"512\", \"W\": \"512\", " \
                 " \"config\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
