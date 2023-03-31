@@ -13,7 +13,7 @@ import json
 
 with open("nft_storage.key") as f:
     nft_storage_key = f.readline()
-    print(nft_storage_key)
+    # print(nft_storage_key)
 
 
 configuration = nft_storage.Configuration(

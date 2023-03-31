@@ -99,6 +99,7 @@ def execute_task():
         config.set_params(content)
 
         res = execute_cluster_task(task_config=config, cluster_manager=clusterMan)
+        taskMan.add_task(config, res)
         print(res)
         return json.dumps(res), 200
     else:

@@ -211,7 +211,7 @@ def execute_cluster_stable_diffusion_task(task_config: BasicTaskConfig,
     task_id = task_config[BasicTaskConfig.task_id]
     task_goal = task_config[BasicTaskConfig.task_goal]
     cluster_id = task_config[BasicTaskConfig.cluster_id]
-    envvar = task_config[BasicTaskConfig.environment_variables]
+    # envvar = task_config[BasicTaskConfig.environment_variables]
     if cluster.cluster_size() == 0:  # if no available node exists
         return TaskResult(task_id=task_id,
                           state=TaskState.NOTEXIST,

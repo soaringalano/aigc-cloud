@@ -3,6 +3,7 @@ from task.task_executor import *
 import threading
 from typing import Dict, List, Union
 import json
+import os
 
 _user_task_suffix = ".usr"
 _id_task_suffix = ".idx"
@@ -61,23 +62,29 @@ class TaskManager:
             return
 
         # key : user_id, value : list of tasks that belong to the user
-        with open(task_file_prefix + _user_task_suffix, "a+") as user_file:
-            self.__user_tasks = json.load(user_file)
+        uf:str = task_file_prefix + _user_task_suffix
+        if os.path.isfile(uf):
+            with open(uf, "a+") as user_file:
+                self.__user_tasks = json.load(user_file)
 
         # key : task_id, value : task object
-        with open(task_file_prefix + _id_task_suffix, "a+") as all_tasks_file:
-            self.__all_tasks = json.load(all_tasks_file)
+        idxf:str = task_file_prefix + _id_task_suffix
+        if os.path.isfile(idxf):
+            with open(idxf, "a+") as all_tasks_file:
+                self.__all_tasks = json.load(all_tasks_file)
 
     def save_to_file(self,
                      task_file_prefix: str) -> None:
         # key : user_id, value : list of tasks that belong to the user
         jo = json.dumps(self.__user_tasks, indent=4)
-        with open(task_file_prefix + _user_task_suffix, "w") as user_file:
+        uf:str = task_file_prefix + _user_task_suffix
+        with open(uf, "w") as user_file:
             user_file.write(jo)
 
         # key : task_id, value : task object
         jo = json.dumps(self.__all_tasks, indent=4)
-        with open(task_file_prefix + _id_task_suffix, "w") as all_tasks_file:
+        idxf:str = task_file_prefix + _id_task_suffix
+        with open(idxf, "w") as all_tasks_file:
             all_tasks_file.write(jo)
 
     def list_user_tasks(self, user_id: str) -> List[str]:
@@ -104,6 +111,7 @@ class TaskManager:
             self.__user_tasks[user_id].append(task_id)
         else:
             self.__user_tasks[user_id] = [task_id]
+        self.save_to_file(self.task_file_prefix)
 
     def remove_task(self,
                     user_id: str,
@@ -114,12 +122,13 @@ class TaskManager:
 
         if task_id in self.__all_tasks.keys():
             self.__all_tasks.pop(task_id)
+        self.save_to_file(self.task_file_prefix)
 
     def clear(self):
         self.__user_tasks.clear()
         self.__all_tasks.clear()
 
     def __del__(self):
-        self.save_to_file(self.task_file_prefix)
+        # self.save_to_file(self.task_file_prefix)
         self.__all_tasks = None
         self.__user_tasks = None

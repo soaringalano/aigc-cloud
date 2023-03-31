@@ -76,14 +76,15 @@ def execute_train():
 
 def execute_generate():
 
-    url = "http://192.168.1.26:8088/task"
+    url = "http://192.168.1.26:8088/newtask"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
-                " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
-                " \"cluster_id\": \"docker_cluster_1\", \"dataset_path\": \"runwayml/stable-diffusion-v1-5\"," \
-                " \"model_path\": \"/home/ldm/models/\"," \
-                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
-                " \"base\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
+                " \"task_goal\": \"generate\", \"task_name\": \"testtask\", \"user_id\": \"linmao\"," \
+                " \"cluster_id\": \"docker_cluster_1\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
+                " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
+                " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
+                " \"n_samples\": \"9\", \"H\": \"512\", \"W\": \"512\", " \
+                " \"config\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)
     print(json.loads(post_data))
@@ -132,4 +133,6 @@ def execute_login():
 
 # execute_login()
 
-execute_train()
+# execute_train()
+
+execute_generate()
