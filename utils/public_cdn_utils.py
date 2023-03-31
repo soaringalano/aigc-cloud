@@ -69,4 +69,4 @@ def test_store_file():
         print("upload failed reason is %s" % nft)
 
 
-test_store_file()
+# test_store_file()
