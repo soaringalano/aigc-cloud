@@ -28,7 +28,19 @@ class NodeState(Enum):
     EXCEPTION = "HALTED"
 
 
-class ClusterNode:
+class ClusterNode(Dict):
+
+    node_name = 'node_name'
+    node_type = 'node_type'
+    node_address = 'node_address'
+    node_port = 'node_port'
+    node_uuid = 'node_uuid'
+    node_state = 'node_state'
+    gpu_count = 'gpu_count'
+    computility = 'compute_capability'
+    region = 'region'
+    gpu_usage = 'gpu_usage'
+
     r"""
     Base class for cluster nodes, includes all basic attributes
     """
@@ -41,53 +53,52 @@ class ClusterNode:
                  node_uuid: int = 0,
                  node_state: NodeState = NodeState.AVAILABLE,
                  gpu_count: int = 0,
-                 compute_capability: int = 0,
-                 region: Union[int, str] = None,
-                 attributes: Dict = None) -> None:
-        self._node_name = node_name
-        self._node_type = node_type
-        self._node_address = node_address
-        self._node_port = node_port
-        self._node_uuid = node_uuid
-        self._node_state = node_state
-        self._gpu_count = gpu_count
-        self._compute_capability = compute_capability
-        self._region = region
-        self._attributes = attributes
+                 computility: int = 0,
+                 region: Union[int, str] = None) -> None:
+        super().__init__()
+        self[self.node_name] = node_name
+        self[self.node_type] = node_type
+        self[self.node_address] = node_address
+        self[self.node_port] = node_port
+        self[self.node_uuid] = node_uuid
+        self[self.node_state] = node_state
+        self[self.gpu_count] = gpu_count
+        self[self.computility] = computility
+        self[self.region] = region
         return
 
-    def node_name(self):
-        return self._node_name
+    def get_node_name(self):
+        return self[self.node_name]
     
-    def node_type(self):
-        return self._node_type
+    def get_node_type(self):
+        return self[self.node_type]
 
-    def node_address(self):
-        return self._node_address
+    def get_node_address(self):
+        return self[self.node_address]
 
-    def node_port(self):
-        return self._node_port
+    def get_node_port(self):
+        return self[self.node_port]
 
-    def node_uuid(self):
-        return self._node_uuid
+    def get_node_uuid(self):
+        return self[self.node_uuid]
 
-    def node_state(self):
-        return self._node_state
+    def get_node_state(self):
+        return self[self.node_state]
 
-    def gpu_count(self):
-        return self._gpu_count
+    def get_gpu_count(self):
+        return self[self.gpu_count]
 
-    def compute_capability(self):
-        return self._compute_capability
+    def get_computbility(self):
+        return self[self.computility]
 
-    def region(self):
-        return self._region
+    def get_region(self):
+        return self[self.region]
 
-    def attributes(self):
-        return self._attributes
+    def set_gpu_usage(self, gpu_usage:Dict[int, float]):
+        self[self.gpu_usage] = gpu_usage
 
-    def get_attribute(self, key):
-        return self._attributes[key]
+    def get_gpu_usage(self) -> Dict[int, float]:
+        return self[self.gpu_usage]
 
 
 class Cluster:
@@ -96,10 +107,13 @@ class Cluster:
                  cluster_id: Union[int, str] = None,
                  cluster_name: str = None,
                  general_nodes: Dict[int, ClusterNode] = None) -> None:
-        self._general_nodes = general_nodes
-        self._cluster_id = cluster_id
-        self._cluster_name = cluster_name
+        self._general_nodes:Dict[int, ClusterNode] = general_nodes
+        self._cluster_id:str = cluster_id
+        self._cluster_name:str = cluster_name
         return
+
+    def get_cluster_node(self, node_uuid:int=-1):
+        return self._general_nodes.get(node_uuid)
 
     def general_nodes(self) -> Dict[int, ClusterNode]:
         return self._general_nodes
@@ -120,17 +134,25 @@ class Cluster:
 
     def get_random_node_uuid(self) -> int:
         if self._general_nodes is None:
-            return None
+            return -1
         if len(self._general_nodes) == 1:
-            return self._general_nodes.values()[0].node_uuid()
-        rand = random.Random();
+            nodes = self._general_nodes.values()
+            return List[ClusterNode](nodes)[0].get_node_uuid()
+        rand = random.Random()
         ret = rand.randint(0, len(self._general_nodes))
         i = 0
         for value in self._general_nodes.values():
             if i == ret:
-                return value.node_uuid()
+                return value.get_node_uuid()
             i = i+1
         return -1
+
+    def get_cluster_nodes_usage(self) -> Dict[int, Dict[int, float]]:
+        usage:Dict[int, Dict[int, float]] = {}
+        for uuid in self._general_nodes.keys():
+            use = self._general_nodes.get(uuid).get_gpu_usage()
+            usage[uuid] = use
+        return usage
 
 
 class ClusterManager:
@@ -157,11 +179,11 @@ class ClusterManager:
         if cluster_id not in self._clusters.keys():
             raise Exception(f"the specified cluster: %s does not exist, please check your input" % cluster_id)
         cluster: Cluster = self._clusters.get(cluster_id)
-        if cluster.contains_node(cluster_node.node_uuid()):
+        if cluster.contains_node(cluster_node.get_node_uuid()):
             raise Exception(
                 f"the specified cluster: %s already contains the cluster node: %i"
-                % cluster_id % cluster_node.node_uuid())
-        self._clusters.get(cluster_id)[cluster_node.node_uuid()] = cluster_node
+                % cluster_id % cluster_node.get_node_uuid())
+        self._clusters.get(cluster_id)[cluster_node.get_node_uuid()] = cluster_node
 
     def del_cluster_node(self, cluster_id: Union[int, str], node_uuid: int) -> None:
         if cluster_id not in self._clusters.keys():

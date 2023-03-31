@@ -252,7 +252,7 @@ def execute_cluster_stable_diffusion_task(task_config: BasicTaskConfig,
         counter = 1
         for node in nodes:
             master = False
-            if node.node_uuid() == rand_node.node_uuid():
+            if node.get_node_uuid() == rand_node.get_node_uuid():
                 master = True
             else:
                 counter += 1
@@ -291,16 +291,16 @@ def execute_node_stable_diffusion_train(rank: int,
                                         config: BasicTaskConfig,
                                         is_master: bool = False) -> (bool, str):
     print("executing node stable diffusion train task")
-    host_address = cluster_node.node_address()
-    host_port = cluster_node.node_port()
+    host_address = cluster_node.get_node_address()
+    host_port = cluster_node.get_node_port()
     accelerator = ENVKEY_ACCELERATOR_AUTO if rank < 0 else ENVKEY_ACCELERATOR_DDP
     if rank == -1 or is_master and master_node is not None:
-        master_addr = master_node.node_address()
-        master_port = master_node.node_port()
+        master_addr = master_node.get_node_address()
+        master_port = master_node.get_node_port()
     else:
-        master_addr = cluster_node.node_address()
-        master_port = cluster_node.node_port()
-    gpu_count = cluster_node.gpu_count()
+        master_addr = cluster_node.get_node_address()
+        master_port = cluster_node.get_node_port()
+    gpu_count = cluster_node.get_gpu_count()
     restful_url = CLUSTER_RESTFUL_API_TEMPLATE
     params = {
         StableDiffusionTrainConfig.master_addr: master_addr,
@@ -333,8 +333,8 @@ def execute_node_stable_diffusion_train(rank: int,
 def execute_node_stable_diffusion_generate(config: BasicTaskConfig,
                                            node: ClusterNode) -> (bool, str):
     print("executing cluster stable diffusion generate task")
-    host_address = node.node_address()
-    host_port = node.node_port()
+    host_address = node.get_node_address()
+    host_port = node.get_node_port()
     restful_url = CLUSTER_RESTFUL_API_TEMPLATE
 
     restful_url = restful_url.format(host_address=host_address,

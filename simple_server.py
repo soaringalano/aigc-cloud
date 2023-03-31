@@ -170,6 +170,7 @@ def execute_status_task():
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
 
+
 @cloudservice.route('/clusterstat', methods=['POST'])
 def execute_status_task():
     if request.method == 'POST':
@@ -187,9 +188,11 @@ def execute_status_task():
             return json.dump(
                     "{errmsg: \"No such cluster with id %s, please check your input\"}" % cluster_id),\
                     200
-        return json.dumps(task.task_result), 200
+        usage = cluster.get_cluster_nodes_usage()
+        return json.dumps(usage), 200
     else:
         return "{\"error msg\": \"only post request can be responded\"}", 400
+
 
 if __name__ == "__main__":
     addr = os.environ['SERVER_ADDR']
