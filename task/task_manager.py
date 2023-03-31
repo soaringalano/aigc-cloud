@@ -13,7 +13,7 @@ class Task:
     def __init__(self,
                  user_id: str = None,
                  task_id: str = None,
-                 task_config: BasicTaskConfig = None,
+                 task_config: json = None,
                  task_result: str = None):
         self.user_id = user_id
         self.task_id = task_id
@@ -104,7 +104,7 @@ class TaskManager:
         user_id = task_config[BasicTaskConfig.user_id]
         task: Task = Task(task_id=task_id,
                           user_id=user_id,
-                          task_config=task_config,
+                          task_config=json.dumps(task_config),
                           task_result=task_result)
         self.__all_tasks[task_id] = task
         if user_id in self.__user_tasks.keys():

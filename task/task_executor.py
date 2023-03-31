@@ -152,17 +152,17 @@ def select_local_executable_shell(config: BasicTaskConfig) -> str:
                                                              gpu_count=gpu_count,
                                                              num_nodes=num_nodes)
 
-        elif config[StableDiffusionTrainConfig.task_goal] == TaskGoal.generate.value:
+        elif config[BasicTaskConfig.task_goal] == TaskGoal.generate.value:
             prompt = config[StableDiffusionGenerateConfig.prompt]
             ckpt = config[StableDiffusionGenerateConfig.ckpt]
             outdir = config[StableDiffusionGenerateConfig.outdir]
-            n_samples = config[StableDiffusionGenerateConfig.n_samples]
+            n_sample = config[StableDiffusionGenerateConfig.n_sample]
             H = config[StableDiffusionGenerateConfig.H]
             W = config[StableDiffusionGenerateConfig.W]
             config = config[StableDiffusionGenerateConfig.config]
             execute_sh = SHELL_STABLE_DIFFUSION_GENERATE.format(prompt=prompt,
                                                                 outdir=outdir,
-                                                                n_samples=n_samples,
+                                                                n_sample=n_sample,
                                                                 H=H,
                                                                 W=W,
                                                                 config=config,

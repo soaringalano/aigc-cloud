@@ -186,7 +186,7 @@ class StableDiffusionGenerateConfig(BasicTaskConfig):
     W = "W"
     C = "C"
     f = "f"
-    n_samples = "n_samples"
+    n_sample = "n_sample"
     n_rows = "n_rows"
     scale = "scale"
     from_file = "from-file"
