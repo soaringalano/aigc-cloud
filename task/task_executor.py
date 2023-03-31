@@ -213,11 +213,12 @@ def execute_cluster_stable_diffusion_task(task_config: BasicTaskConfig,
     cluster_id = task_config[BasicTaskConfig.cluster_id]
     # envvar = task_config[BasicTaskConfig.environment_variables]
     if cluster.cluster_size() == 0:  # if no available node exists
-        return TaskResult(task_id=task_id,
-                          state=TaskState.NOTEXIST,
-                          process=None,
-                          additional_msg=f"No available node to execute task %s on cluster %s"
-                                         % (task_id, cluster_id))
+        # return TaskResult(task_id=task_id,
+        #                   state=TaskState.NOTEXIST,
+        #                   process=None,
+        #                   additional_msg=f"No available node to execute task %s on cluster %s"
+        #                                  % (task_id, cluster_id))
+        return False, "{\"error_msg\":\"no available cluster node \"}"
     if cluster.cluster_size() == 1:  # if the cluster contains only one node
         print("executing cluster size 1 stable diffusion task")
         node = list(cluster.general_nodes().values())[0]

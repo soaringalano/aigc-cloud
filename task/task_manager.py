@@ -14,11 +14,11 @@ class Task:
                  user_id: str = None,
                  task_id: str = None,
                  task_config: BasicTaskConfig = None,
-                 task_result: TaskResult = None):
+                 task_result: Union[str, TaskResult] = None):
         self.user_id = user_id
         self.task_id = task_id
         self.task_config = task_config
-        self.task_result = task_result.to_dict()
+        self.task_result = task_result
         return
 
     #
