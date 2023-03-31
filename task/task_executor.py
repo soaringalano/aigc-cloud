@@ -3,7 +3,7 @@ import subprocess
 import requests
 import yaml
 import json
-from task_config import (TaskType,
+from .task_config import (TaskType,
                          TaskGoal,
                          BasicTaskConfig,
                          TerminateTaskConfig,
