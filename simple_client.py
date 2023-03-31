@@ -16,7 +16,7 @@ def cloud_home():
     return "welcome to soaringalano_cloud home", 200
 
 
-@cloud_client.route('/task', methods=['POST', 'GET'])
+@cloud_client.route('/newtask', methods=['POST', 'GET'])
 def execute_task() -> (str, int):
     print("executing local task for remote request")
     if request.data is None:

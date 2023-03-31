@@ -73,7 +73,7 @@ SYSTEM_STABLE_DIFFUSION_PATH = "/home/soaringalano/source/stable-diffusion/"
 SYSTEM_DIFFUSERS_PATH = "/home/soaringalano/source/diffusers/"
 
 
-CLUSTER_RESTFUL_API_TEMPLATE = "http://{host_address}:{host_port}/task"
+CLUSTER_RESTFUL_API_TEMPLATE = "http://{host_address}:{host_port}/newtask"
 
 JSON_HEADERS = {'Content-type': 'application/json'}
 
