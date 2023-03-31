@@ -172,7 +172,7 @@ def execute_status_task():
 
 
 @cloudservice.route('/clusterstat', methods=['POST'])
-def execute_status_task():
+def execute_status_cluster():
     if request.method == 'POST':
         content_type = request.headers.get('Content-Type')
         content = request.data
