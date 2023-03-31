@@ -71,12 +71,14 @@ class TaskManager:
     def save_to_file(self,
                      task_file_prefix: str) -> None:
         # key : user_id, value : list of tasks that belong to the user
+        jo = json.dumps(self.__user_tasks, indent=4)
         with open(task_file_prefix + _user_task_suffix, "w") as user_file:
-            json.dumps(self.__user_tasks, user_file, indent=4)
+            user_file.write(jo)
 
         # key : task_id, value : task object
+        jo = json.dumps(self.__all_tasks, indent=4)
         with open(task_file_prefix + _id_task_suffix, "w") as all_tasks_file:
-            json.dumps(self.__all_tasks, all_tasks_file, indent=4)
+            all_tasks_file.write(jo)
 
     def list_user_tasks(self, user_id: str) -> List[str]:
         if user_id in self.__user_tasks.keys():
