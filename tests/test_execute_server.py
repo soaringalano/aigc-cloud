@@ -84,7 +84,7 @@ def execute_generate():
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
-                " \"n_samples\": \"9\", \"H\": \"512\", \"W\": \"512\", " \
+                " \"n_sample\": \"9\", \"H\": \"512\", \"W\": \"512\", " \
                 " \"config\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)

@@ -14,7 +14,7 @@ class Task:
                  user_id: str = None,
                  task_id: str = None,
                  task_config: BasicTaskConfig = None,
-                 task_result: Union[str, TaskResult] = None):
+                 task_result: str = None):
         self.user_id = user_id
         self.task_id = task_id
         self.task_config = task_config
