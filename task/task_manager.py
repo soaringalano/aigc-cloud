@@ -9,47 +9,11 @@ _user_task_suffix = ".usr"
 _id_task_suffix = ".idx"
 
 
-class Task:
-    def __init__(self,
-                 user_id: str = None,
-                 task_id: str = None,
-                 task_config: json = None,
-                 task_result: str = None):
-        self.user_id = user_id
-        self.task_id = task_id
-        self.task_config = task_config
-        self.task_result = task_result
-        return
-
-    #
-    # def user_id(self) -> str:
-    #     return self.user_id
-    #
-    # def task_id(self) -> str:
-    #     return self.task_id
-    #
-    # def task_config(self) -> BasicTaskConfig:
-    #     return self.task_config
-    #
-    # def task_result(self) -> TaskResult:
-    #     return self.task_result
-
-    # def to_json(self) -> str:
-    #     return json.dumps(
-    #         {
-    #             "user_id": self.user_id,
-    #             "task_id": self.task_id,
-    #             "task_config": self.task_config,
-    #             "task_result": self.task_result
-    #         }
-    #     )
-
-
 class TaskManager:
     def __init__(self,
                  task_file_prefix: str = None):
         # key:task id, value:task
-        self.__all_tasks: Dict[str, Task] = {}
+        self.__all_tasks: Dict[str, Dict] = {}
         # key:user id, value:list of task id
         self.__user_tasks: Dict[str, List[str]] = {}
         self.task_file_prefix = task_file_prefix
@@ -90,22 +54,22 @@ class TaskManager:
     def list_user_tasks(self, user_id: str) -> List[str]:
         if user_id in self.__user_tasks.keys():
             return self.__user_tasks[user_id]
-        return None
+        return []
 
-    def get_task(self, task_id: str) -> Task:
+    def get_task(self, task_id: str) -> Dict:
         if task_id in self.__all_tasks.keys():
             return self.__all_tasks[task_id]
-        return None
+        return []
 
     def add_task(self,
                  task_config: BasicTaskConfig,
                  task_result: TaskResult = None):
         task_id = task_config[BasicTaskConfig.task_id]
         user_id = task_config[BasicTaskConfig.user_id]
-        task: Task = Task(task_id=task_id,
-                          user_id=user_id,
-                          task_config=json.dumps(task_config),
-                          task_result=task_result)
+        task: Dict = {"task_id": task_id,
+                          "user_id": user_id,
+                          "task_config": json.dumps(task_config),
+                          "task_result": task_result.to_dict()}
         self.__all_tasks[task_id] = task
         if user_id in self.__user_tasks.keys():
             self.__user_tasks[user_id].append(task_id)
