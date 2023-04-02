@@ -20,7 +20,7 @@ def test_execute_local_generate():
     config[StableDiffusionGenerateConfig.ckpt] = "/home/ldm/models/ldm/v1/model.ckpt"
     config[StableDiffusionGenerateConfig.n_sample] = 9
     config[StableDiffusionGenerateConfig.prompt] = "A horse rides an astronaut on Mars"
-    config[StableDiffusionGenerateConfig.environment_variables] = "{'SOURCE_HOME':'/home/ldm/source/stable-diffusion'}"
+    config[StableDiffusionGenerateConfig.environment_variables] = {'SOURCE_HOME':'/home/ldm/source/stable-diffusion'}
 
     execute_local_task(config)
 
