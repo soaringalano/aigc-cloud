@@ -139,9 +139,7 @@ def select_local_executable_shell(config: BasicTaskConfig) -> str:
     execute_sh = ""
     print(yaml.dump(config))
     if config[BasicTaskConfig.task_type] == TaskType.stable_diffusion.value:
-        print(config[BasicTaskConfig.task_type])
         if config[BasicTaskConfig.task_goal] == TaskGoal.train.value:
-            print(config[BasicTaskConfig.task_goal])
             master_addr = config[StableDiffusionTrainConfig.master_addr]
             master_port = config[StableDiffusionTrainConfig.master_port]
             node_rank = config[StableDiffusionTrainConfig.node_rank]
@@ -158,7 +156,6 @@ def select_local_executable_shell(config: BasicTaskConfig) -> str:
                                                              num_nodes=num_nodes)
 
         elif config[BasicTaskConfig.task_goal] == TaskGoal.generate.value:
-            print(config[BasicTaskConfig.task_goal])
             prompt = config[StableDiffusionGenerateConfig.prompt]
             ckpt = config[StableDiffusionGenerateConfig.ckpt]
             outdir = config[StableDiffusionGenerateConfig.outdir]
