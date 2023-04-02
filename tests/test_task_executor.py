@@ -6,8 +6,8 @@ import yaml
 
 def test_execute_local_generate():
     config = BasicTaskConfig()
-    task_type = TaskType.stable_diffusion
-    task_goal = TaskGoal.generate
+    task_type = TaskType.stable_diffusion.value
+    task_goal = TaskGoal.generate.value
     config[BasicTaskConfig.task_id] = "test_generate_task"
     config[BasicTaskConfig.task_type] = task_type
     config[BasicTaskConfig.task_goal] = task_goal
