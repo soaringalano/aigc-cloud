@@ -134,6 +134,7 @@ def __execute_upload_cdn(outdir:str, task_id:str):
 
 
 def select_local_executable_shell(config: BasicTaskConfig) -> str:
+    execute_sh = ""
     if config[BasicTaskConfig.task_type] == TaskType.stable_diffusion.value:
         if config[BasicTaskConfig.task_goal] == TaskGoal.train.value:
 
