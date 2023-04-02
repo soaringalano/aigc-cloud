@@ -9,6 +9,8 @@ def test_execute_local_generate():
     task_type = TaskType.stable_diffusion
     task_goal = TaskGoal.generate
     config[BasicTaskConfig.task_id] = "test_generate_task"
+    config[BasicTaskConfig.task_type] = task_type
+    config[BasicTaskConfig.task_goal] = task_goal
     config[BasicTaskConfig.cluster_id] = ""
     config[BasicTaskConfig.user_id] = "soaringalano_lm"
     config[StableDiffusionGenerateConfig.outdir] = "/home/ldm/source/stable-diffusion/output"
