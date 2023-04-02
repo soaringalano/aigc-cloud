@@ -105,7 +105,7 @@ def execute_local_task(task_config: BasicTaskConfig = None) -> TaskResult:
         return TaskResult(TaskState.NOTEXIST, task_id="invalid task id")
     envvar = task_config[BasicTaskConfig.environment_variables]
     local_executable_shell = select_local_executable_shell(task_config)
-    with subprocess.Popen(args=local_executable_shell,
+    with subprocess.Popen(local_executable_shell,
                           shell=True,
                           stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE,
