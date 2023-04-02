@@ -108,8 +108,10 @@ def execute_local_task(task_config: BasicTaskConfig = None) -> TaskResult:
     print(local_executable_shell)
     with subprocess.Popen(local_executable_shell,
                           shell=True,
-                          stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE,
+                          # stdout=subprocess.PIPE,
+                          # stderr=subprocess.PIPE,
+                          stdout=sys.stdout,
+                          stderr=sys.stderr,
                           env=envvar,
                           cwd=envvar[SYSTEM_SOURCE_HOME]) as proc:
 
