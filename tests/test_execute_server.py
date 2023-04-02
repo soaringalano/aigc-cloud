@@ -47,6 +47,7 @@
 #################################################################
 import requests
 import json
+import yaml
 
 
 def execute_train():
@@ -101,16 +102,14 @@ def execute_generate():
         print(response.content)
 
 
-def execute_status():
+def execute_task_status():
 
-    url = "http://192.168.1.26:8088/stat"
+    url = "http://192.168.1.26:8088/taskstat"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"status\", \"task_name\": \"testtask\"," \
-                " \"cluster_id\": \"docker_cluster_1\", \"dataset_path\": \"runwayml/stable-diffusion-v1-5\"," \
-                " \"model_path\": \"/home/ldm/models/\"," \
+                " \"cluster_id\": \"docker_cluster_1\"," \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
-                " \"base\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)
     print(json.loads(post_data))
@@ -120,7 +119,14 @@ def execute_status():
 
     if response.ok:
         print("all done!")
-        print(response.headers, response.content, response.text, response.json())
+        # print(response.headers, response.content, response.text, response.json())
+        print(response.content)
+        s = yaml.load(response.content, yaml.Loader)
+        s = s[14:len(s)-2]
+        print(s)
+        print(type(s))
+        print(yaml.load(s, yaml.FullLoader)['task_state'])
+        # print(yaml.load(response.json(), yaml.FullLoader).content.task_state)
     else:
         print("error")
         print(response.content)
@@ -137,3 +143,5 @@ def execute_login():
 # execute_train()
 
 execute_generate()
+
+execute_task_status()

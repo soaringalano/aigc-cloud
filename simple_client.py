@@ -36,7 +36,7 @@ def execute_task() -> (str, int):
     return res.to_json(), 200
 
 
-@cloud_client.route('/stat', methods=['POST', 'GET'])
+@cloud_client.route('/taskstat', methods=['POST', 'GET'])
 def check_state(self) -> (str, int):
     print("checking local task state for remote request")
     if request.data is None:

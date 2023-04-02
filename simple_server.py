@@ -45,6 +45,10 @@ docker_cluster_2 = Cluster(cluster_id='docker_cluster_2',
                          general_nodes={10000: cluster_node_0},
                          cluster_name='docker_cluster_2')
 
+os.environ['SOURCE_HOME'] = '/home/linmao/workspaces/python/soaringalano/cloudservice'
+os.environ['SERVER_ADDR'] = '192.168.1.26'
+os.environ['SERVER_PORT'] = '8088'
+
 clusterMan = ClusterManager()
 
 clusterMan.add_cluster(docker_cluster_0)
@@ -98,12 +102,13 @@ def execute_task():
         config = BasicTaskConfig()
         config.set_params(content)
 
-        res = execute_cluster_task(task_config=config, cluster_manager=clusterMan)
+        code, res = execute_cluster_task(task_config=config, cluster_manager=clusterMan)
+        print(code, res)
         taskMan.add_task(config, res)
-        print(res)
+        print(code, res)
         return json.dumps(res), 200
     else:
-        return "{\"error msg\": \"only post request can be responded\"}", 400
+        return "{\"error msg\": \"only post request will be treated\"}", 400
 
 
 @cloudservice.route('/listtask', methods=['POST'])
@@ -125,7 +130,7 @@ def execute_listtask():
                     200
         return json.dumps(task_ids), 200
     else:
-        return "{\"error msg\": \"only post request can be responded\"}", 400
+        return "{\"error msg\": \"only post request will be treated\"}", 400
 
 
 @cloudservice.route('/gettask', methods=['POST'])
@@ -147,7 +152,7 @@ def execute_gettask():
                     200
         return json.dumps(task), 200
     else:
-        return "{\"error msg\": \"only post request can be responded\"}", 400
+        return "{\"error msg\": \"only post request will be treated\"}", 400
 
 
 @cloudservice.route('/taskstat', methods=['POST'])
@@ -167,9 +172,10 @@ def execute_status_task():
             return json.dump(
                     "{errmsg: \"No such task with id %s, please check your input\"}" % task_id),\
                     200
-        return json.dumps(task.task_result), 200
+        print(task)
+        return json.dump(task), 200
     else:
-        return "{\"error msg\": \"only post request can be responded\"}", 400
+        return "{\"error msg\": \"only post request will be treated\"}", 400
 
 
 @cloudservice.route('/clusterstat', methods=['POST'])
@@ -192,7 +198,7 @@ def execute_status_cluster():
         usage = cluster.get_cluster_nodes_usage()
         return json.dumps(usage), 200
     else:
-        return "{\"error msg\": \"only post request can be responded\"}", 400
+        return "{\"error msg\": \"only post request will be treated\"}", 400
 
 
 if __name__ == "__main__":

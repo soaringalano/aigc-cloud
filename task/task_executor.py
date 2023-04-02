@@ -118,9 +118,9 @@ def execute_local_task(task_config: BasicTaskConfig = None) -> TaskResult:
                           "{\"msg\":\"Task is planned to run, please check the status later.\"")
 
 
-def execute_post_process(task_config: BasicTaskConfig = None) -> TaskResult:
+def execute_post_process(task_config: BasicTaskConfig = None):
     if task_config[BasicTaskConfig.task_goal] == TaskGoal.generate.value:
-        return __execute_upload_cdn(task_config)
+        __execute_upload_cdn(task_config)
 
 
 def __execute_upload_cdn(outdir:str, task_id:str):
@@ -191,12 +191,15 @@ def select_local_executable_shell(config: BasicTaskConfig) -> str:
 
 # we assume that all related environment variables have already been set, so we can execute the shell
 def execute_cluster_task(task_config: BasicTaskConfig,
-                         cluster_manager: ClusterManager) -> TaskResult:
+                         cluster_manager: ClusterManager) -> (bool, str):
     print("executing cluster task")
     if task_config is None: return TaskResult(additional_msg="Task config should not be null")
     cluster = cluster_manager.get_cluster(task_config[BasicTaskConfig.cluster_id])
     if cluster is None:
-        return TaskResult(additional_msg=f"No such cluster : %s, please check" % task_config.cluster_id())
+        return False, TaskResult(task_id=task_config[BasicTaskConfig.task_id],
+                                 state=TaskState.NOTEXIST,
+                                 process=None,
+                                 additional_msg=f"No such cluster : %s, please check" % task_config.cluster_id()).to_json()
     res = "Cluster task execution failed."
     if task_config[BasicTaskConfig.task_type] == TaskType.stable_diffusion.value:
         res = execute_cluster_stable_diffusion_task(task_config, cluster)

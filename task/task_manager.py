@@ -1,3 +1,5 @@
+import yaml
+
 from task.task_config import *
 from task.task_executor import *
 import threading
@@ -26,30 +28,32 @@ class TaskManager:
             return
 
         # key : user_id, value : list of tasks that belong to the user
-        uf:str = task_file_prefix + _user_task_suffix
+        uf: str = task_file_prefix + _user_task_suffix
         if os.path.isfile(uf):
-            with open(uf, "a+") as user_file:
-                self.__user_tasks = json.load(user_file)
+            with open(uf, "r") as user_file:
+                self.__user_tasks = yaml.load(user_file, yaml.FullLoader)
 
         # key : task_id, value : task object
-        idxf:str = task_file_prefix + _id_task_suffix
+        idxf: str = task_file_prefix + _id_task_suffix
         if os.path.isfile(idxf):
-            with open(idxf, "a+") as all_tasks_file:
-                self.__all_tasks = json.load(all_tasks_file)
+            with open(idxf, "r") as all_tasks_file:
+                self.__all_tasks = yaml.load(all_tasks_file, yaml.FullLoader)
 
     def save_to_file(self,
                      task_file_prefix: str) -> None:
         # key : user_id, value : list of tasks that belong to the user
         jo = json.dumps(self.__user_tasks, indent=4)
-        uf:str = task_file_prefix + _user_task_suffix
-        with open(uf, "w") as user_file:
-            user_file.write(jo)
+        uf: str = task_file_prefix + _user_task_suffix
+        mode = "w" if os.path.isfile(uf) else "a+"
+        with open(uf, mode) as user_file:
+            user_file.write(yaml.dump(self.__user_tasks))
 
         # key : task_id, value : task object
         jo = json.dumps(self.__all_tasks, indent=4)
-        idxf:str = task_file_prefix + _id_task_suffix
-        with open(idxf, "w") as all_tasks_file:
-            all_tasks_file.write(jo)
+        idxf: str = task_file_prefix + _id_task_suffix
+        mode = "w" if os.path.isfile(idxf) else "a+"
+        with open(idxf, mode) as all_tasks_file:
+            all_tasks_file.write(yaml.dump(self.__all_tasks))
 
     def list_user_tasks(self, user_id: str) -> List[str]:
         if user_id in self.__user_tasks.keys():
@@ -63,14 +67,14 @@ class TaskManager:
 
     def add_task(self,
                  task_config: BasicTaskConfig,
-                 task_result: TaskResult = None):
+                 task_result: str = None):
         task_id = task_config[BasicTaskConfig.task_id]
         user_id = task_config[BasicTaskConfig.user_id]
-        task: Dict = {"task_id": task_id,
-                          "user_id": user_id,
-                          "task_config": json.dumps(task_config),
-                          "task_result": task_result.to_dict()}
-        self.__all_tasks[task_id] = task
+        task: Dict = {'task_id': task_id,
+                      'user_id': user_id,
+                      'task_config': task_config,
+                      'task_result': yaml.load(task_result, yaml.FullLoader)}
+        self.__all_tasks[task_id] = yaml.dump(task)
         if user_id in self.__user_tasks.keys():
             self.__user_tasks[user_id].append(task_id)
         else:
