@@ -15,11 +15,11 @@ def test_execute_local_generate():
     config[BasicTaskConfig.user_id] = "soaringalano_lm"
     config[StableDiffusionGenerateConfig.outdir] = "/home/ldm/source/stable-diffusion/output"
     # config[StableDiffusionGenerateConfig.config] = "/home/ldm/source/stable-diffusion/models/ldm/text2img256/config.yaml"
-    config[StableDiffusionGenerateConfig.H] = 512
-    config[StableDiffusionGenerateConfig.W] = 512
+    config[StableDiffusionGenerateConfig.H] = 256
+    config[StableDiffusionGenerateConfig.W] = 256
     config[StableDiffusionGenerateConfig.ckpt] = "/home/ldm/models/ldm/v1/model.ckpt"
     config[StableDiffusionGenerateConfig.n_sample] = 9
-    config[StableDiffusionGenerateConfig.prompt] = "A horse rides an astronaut on Mars"
+    config[StableDiffusionGenerateConfig.prompt] = "an astronaut rides a horse on Mars"
     config[StableDiffusionGenerateConfig.environment_variables] =\
         {'SOURCE_HOME':'/home/ldm/source/stable-diffusion',
          'PYTHON_HOME':'/root/anaconda3/envs/ldm/bin/'}
