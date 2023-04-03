@@ -14,7 +14,7 @@ def test_execute_local_generate():
     config[BasicTaskConfig.cluster_id] = ""
     config[BasicTaskConfig.user_id] = "soaringalano_lm"
     config[StableDiffusionGenerateConfig.outdir] = "/home/ldm/source/stable-diffusion/output"
-    config[StableDiffusionGenerateConfig.config] = "/home/ldm/source/stable-diffusion/models/ldm/text2img256/config.yaml"
+    # config[StableDiffusionGenerateConfig.config] = "/home/ldm/source/stable-diffusion/models/ldm/text2img256/config.yaml"
     config[StableDiffusionGenerateConfig.H] = 512
     config[StableDiffusionGenerateConfig.W] = 512
     config[StableDiffusionGenerateConfig.ckpt] = "/home/ldm/models/ldm/v1/model.ckpt"

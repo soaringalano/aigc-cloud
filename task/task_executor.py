@@ -168,7 +168,7 @@ def select_local_executable_shell(config: BasicTaskConfig) -> str:
                                                                 n_sample=n_sample,
                                                                 H=H,
                                                                 W=W,
-                                                                config=config,
+                                                                # config=config,
                                                                 ckpt=ckpt)
 
         else:  # '''terminate task'''
