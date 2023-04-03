@@ -162,7 +162,7 @@ def select_local_executable_shell(config: BasicTaskConfig) -> str:
             n_sample = config[StableDiffusionGenerateConfig.n_sample]
             H = config[StableDiffusionGenerateConfig.H]
             W = config[StableDiffusionGenerateConfig.W]
-            config = config[StableDiffusionGenerateConfig.config]
+            # config = config[StableDiffusionGenerateConfig.config]
             execute_sh = SHELL_STABLE_DIFFUSION_GENERATE.format(prompt=prompt,
                                                                 outdir=outdir,
                                                                 n_sample=n_sample,
