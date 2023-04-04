@@ -10,10 +10,22 @@ from pprint import pprint
 from typing import Union, List, Dict
 import os
 import json
+import yaml
+import oss2
 
-with open("nft_storage.key") as f:
+with open("../nft_storage.key") as f:
     nft_storage_key = f.readline()
     # print(nft_storage_key)
+
+with open('../storage_config.yaml') as f:
+    aliyun_config = yaml.load(stream=f, Loader=yaml.FullLoader)
+    aliyun_bucket = aliyun_config['aliyun']['oss']['bucket']
+    aliyun_accesskey = aliyun_config['aliyun']['oss']['accesskey']
+    aliyun_accesskey_secret = aliyun_config['aliyun']['oss']['secret']
+    aliyun_endpoint = aliyun_config['aliyun']['oss']['endpoint']
+    aliyun_bucket_domain = aliyun_config['aliyun']['oss']['bucket.domain']
+    auth = oss2.Auth(aliyun_accesskey, aliyun_accesskey_secret)
+    bucket = oss2.Bucket(auth, aliyun_endpoint, aliyun_bucket)
 
 
 configuration = nft_storage.Configuration(
@@ -21,8 +33,57 @@ configuration = nft_storage.Configuration(
     access_token=nft_storage_key
 )
 
+def store_file_to_aliyun(user_id:str, task_id:str, file:str, idx:int=-1) -> (bool, str):
+    if user_id is not None and task_id is not None and \
+            file is not None and os.path.isfile(file):
+        fh, ft = os.path.split(file)
+        if idx >= 0:
+            key = user_id + "/" + task_id + "/" + idx + "_" + ft
+        else:
+            key = user_id + "/" + task_id + "/" + ft
 
-def store_image_as_nft(file:str) -> (bool, Union[str, NFT]):
+        res = oss2.resumable_upload(bucket, key, file)
+        if res is None or res.etag is None or res.request_id is None:
+            return False, "upload to server failed"
+        return True, key
+    return False, f"the specified file %s doesn't exist" % file
+
+def remove_file_from_aliyun(key:str) -> bool:
+    print(bucket.object_exists(key))
+    res = bucket.delete_object(key)
+    if res.status == 200:
+        return True
+    return False
+
+def remove_files_from_aliyun(keys:List[str]) -> bool:
+    res = bucket.batch_delete_objects(keys)
+    print(res.status)
+    if res.status == 200:
+        return True
+    return False
+
+def store_dir_to_aliyun(task_id:str, dir:str) -> (List[bool], List[str]):
+    if dir is not None and os.path.isdir(dir):
+        stats = []
+        keys = []
+        idx = 0
+        with os.walk(dir) as (dir_paths, dir_names, files):
+            for file in files:
+                stat, key = store_file_to_aliyun(task_id=task_id, file=file, idx = idx)
+                stats.append(stat)
+                keys.append(key)
+                idx += 1
+        return stats, keys
+    else:
+        return [], []
+
+
+
+
+
+
+
+def store_file_to_ipfs(file:str) -> (bool, Union[str, NFT]):
     with nft_storage.ApiClient(configuration=configuration) as api_client:
         api_instance = nft_storage_api.NFTStorageAPI(api_client=api_client)
         body = open(file, 'rb')
@@ -36,7 +97,7 @@ def store_image_as_nft(file:str) -> (bool, Union[str, NFT]):
             return False, "{\"err\": %s}" % e
 
 
-def store_dir_images_as_nft(dir: str) -> (bool, Dict[str, Union[List[str], List[NFT]]]):
+def store_dir_to_ipfs(dir: str) -> (bool, Dict[str, Union[List[str], List[NFT]]]):
     with nft_storage.ApiClient(configuration=configuration) as api_client:
         api_instance = nft_storage_api.NFTStorageAPI(api_client=api_client)
         success = []
@@ -58,15 +119,3 @@ def store_dir_images_as_nft(dir: str) -> (bool, Dict[str, Union[List[str], List[
                 return True, {"success": success, "fail": fail}
             else:
                 return False, {"fail": fail}
-
-
-def test_store_file():
-    file = "..\\1.jpg"
-    ok, nft = store_image_as_nft(file)
-    if ok:
-        print("upload ok, cid is %s" % json.dumps(nft.cid))
-    else:
-        print("upload failed reason is %s" % nft)
-
-
-# test_store_file()
