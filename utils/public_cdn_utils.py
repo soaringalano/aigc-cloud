@@ -49,8 +49,10 @@ def store_file_to_aliyun(user_id:str, task_id:str, file:str, idx:int=-1) -> (boo
     return False, f"the specified file %s doesn't exist" % file
 
 def remove_file_from_aliyun(key:str) -> bool:
-    print(bucket.object_exists(key))
-    res = bucket.delete_object(key)
+    # head, tail = os.path.split(key)
+    for obj in oss2.ObjectIterator(bucket, prefix=key):
+        res = bucket.delete_object(obj.key)
+        print(res)
     if res.status == 200:
         return True
     return False
