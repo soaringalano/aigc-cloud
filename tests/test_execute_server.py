@@ -52,7 +52,7 @@ import yaml
 
 def execute_train():
 
-    url = "http://192.168.1.26:8088/task"
+    url = "http://192.168.1.28:8088/task"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
@@ -81,7 +81,7 @@ def execute_generate():
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"generate\", \"task_name\": \"testtask\", \"user_id\": \"linmao\"," \
-                " \"cluster_id\": \"docker_cluster_2\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
+                " \"cluster_id\": \"docker_cluster_0\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
@@ -104,7 +104,7 @@ def execute_generate():
 
 def execute_task_status():
 
-    url = "http://192.168.1.26:8088/taskstat"
+    url = "http://192.168.1.28:8088/taskstat"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"status\", \"task_name\": \"testtask\"," \
@@ -132,7 +132,7 @@ def execute_task_status():
         print(response.content)
 
 def execute_login():
-    url = "http://192.168.1.26:8088/login"
+    url = "http://192.168.1.28:8088/login"
     post_data = "{\"username\":\"soaringalano_cx\", \"password\":\"123456\"}"
     response = requests.post(url=url, data=post_data)
     print(response.content, response.headers, response.status_code, response.text)
@@ -144,4 +144,4 @@ def execute_login():
 
 execute_generate()
 
-execute_task_status()
+# execute_task_status()

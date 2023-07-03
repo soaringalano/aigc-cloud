@@ -37,7 +37,7 @@ ENVKEY_DDP_NODE_RANK = "node_rank"
 
 SHELL_STABLE_DIFFUSION_TRAIN = \
     "export MASTER_ADDR=\"{master_addr}\"\nexport MASTER_PORT=\"{master_port}\"\n" \
-    "export NODE_RANK=\"{node_rank}\"\n$PYTHON_HOME/python -u main.py -t true " \
+    "export NODE_RANK=\"{node_rank}\"\n python -u main.py -t true " \
     "-b {base} --accelerator=\"{accelerator}\" --gpus=\"{gpu_count}\" " \
     "--logger=\"true\" --num_nodes=\"{num_nodes}\""
 SHELL_STABLE_DIFFUSION_GENERATE = "$PYTHON_HOME/python -u scripts/txt2img.py " \
