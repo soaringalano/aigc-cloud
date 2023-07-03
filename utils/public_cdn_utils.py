@@ -13,11 +13,11 @@ import json
 import yaml
 import oss2
 
-with open("../nft_storage.key") as f:
+with open("nft_storage.key") as f:
     nft_storage_key = f.readline()
     # print(nft_storage_key)
 
-with open('../storage_config.yaml') as f:
+with open('storage_config.yaml') as f:
     aliyun_config = yaml.load(stream=f, Loader=yaml.FullLoader)
     aliyun_bucket = aliyun_config['aliyun']['oss']['bucket']
     aliyun_accesskey = aliyun_config['aliyun']['oss']['accesskey']
