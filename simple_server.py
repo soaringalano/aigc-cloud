@@ -45,9 +45,9 @@ docker_cluster_2 = Cluster(cluster_id='docker_cluster_2',
                          general_nodes={10000: cluster_node_0},
                          cluster_name='docker_cluster_2')
 
-os.environ['SOURCE_HOME'] = '/home/linmao/workspaces/python/soaringalano/cloudservice'
-os.environ['SERVER_ADDR'] = '192.168.1.26'
-os.environ['SERVER_PORT'] = '8088'
+# os.environ['SOURCE_HOME'] = '/home/linmao/workspaces/python/soaringalano/cloudservice'
+# os.environ['SERVER_ADDR'] = '192.168.1.28'
+# os.environ['SERVER_PORT'] = '8088'
 
 clusterMan = ClusterManager()
 
