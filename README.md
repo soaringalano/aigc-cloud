@@ -72,4 +72,4 @@ python simple_server.py
 To test run tasks by calling RESTful api of the server, see example in the file: tests/test_execute_server.py and test/test_execute_client.py
 
 ## TODO
-Currently we are using python flask to communicate among server nodes and client nodes for easy test. This will be switched to RabbitMQ for secure and stable service.
+Currently we are using python flask for communication among server nodes and client nodes for easy test. This will be switched to RabbitMQ for secure and stable service.
