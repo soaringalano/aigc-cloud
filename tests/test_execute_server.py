@@ -77,11 +77,11 @@ def execute_train():
 
 def execute_generate():
 
-    url = "http://192.168.1.26:8088/newtask"
+    url = "http://192.168.1.28:8088/newtask"
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"generate\", \"task_name\": \"testtask\", \"user_id\": \"linmao\"," \
-                " \"cluster_id\": \"docker_cluster_1\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
+                " \"cluster_id\": \"docker_cluster_2\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
@@ -108,7 +108,7 @@ def execute_task_status():
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"status\", \"task_name\": \"testtask\"," \
-                " \"cluster_id\": \"docker_cluster_1\"," \
+                " \"cluster_id\": \"docker_cluster_0\"," \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)
