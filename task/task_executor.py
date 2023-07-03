@@ -118,7 +118,8 @@ def execute_local_task(task_config: BasicTaskConfig = None) -> TaskResult:
         return TaskResult(TaskState.SUBMITTED,
                           proc,
                           task_config[BasicTaskConfig.task_id],
-                          "{\"msg\":\"Task is planned to run, please check the status later.\"}")
+                          "Task is planned to run, please check the status later.")
+                          # "{\"msg\":\"Task is planned to run, please check the status later.\"}")
 
 
 def execute_post_process(task_config: BasicTaskConfig = None):
