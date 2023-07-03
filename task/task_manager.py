@@ -73,7 +73,8 @@ class TaskManager:
         task: Dict = {'task_id': task_id,
                       'user_id': user_id,
                       'task_config': task_config,
-                      'task_result': yaml.load(task_result, yaml.FullLoader)}
+                      'task_result': task_result}
+                      # 'task_result': yaml.load(task_result, yaml.FullLoader)}
         self.__all_tasks[task_id] = yaml.dump(task)
         if user_id in self.__user_tasks.keys():
             self.__user_tasks[user_id].append(task_id)
