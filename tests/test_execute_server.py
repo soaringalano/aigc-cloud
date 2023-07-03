@@ -58,7 +58,7 @@ def execute_train():
                 " \"task_goal\": \"train\", \"task_name\": \"testtask\"," \
                 " \"cluster_id\": \"docker_cluster_1\", \"dataset_path\": \"runwayml/stable-diffusion-v1-5\"," \
                 " \"model_path\": \"/home/ldm/models/\"," \
-                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
+                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\", \"PYTHON_HOME\": \"/root/anaconda3/envs/ldm/bin\"}," \
                 " \"base\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)
@@ -84,7 +84,7 @@ def execute_generate():
                 " \"cluster_id\": \"docker_cluster_0\", \"prompt\": \"An astronaut riding a horse on the moon\"," \
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
-                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
+                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\", \"PYTHON_HOME\": \"/root/anaconda3/envs/ldm/bin\"}," \
                 " \"n_sample\": \"9\", \"H\": \"512\", \"W\": \"512\", " \
                 " \"config\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
@@ -109,7 +109,7 @@ def execute_task_status():
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"testtask\"," \
                 " \"task_goal\": \"status\", \"task_name\": \"testtask\"," \
                 " \"cluster_id\": \"docker_cluster_0\"," \
-                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\"}," \
+                " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\", \"PYTHON_HOME\": \"/root/anaconda3/envs/ldm/bin\"}," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)
     print(json.loads(post_data))

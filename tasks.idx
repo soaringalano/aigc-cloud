@@ -6,5 +6,5 @@ testtask: "task_config: !!python/object/new:task.task_config.BasicTaskConfig\n  
   \ riding a horse on the moon\n    task_goal: generate\n    task_id: testtask\n \
   \   task_name: testtask\n    task_type: stable_diffusion\n    user_id: linmao\n\
   \    yaml_content: '{}'\ntask_id: testtask\ntask_result: '{\"content\": b''{\"task_id\"\
-  : \"testtask\", \"task_state\": \"SUBMITTED\", \"pid\":\n  1085, \"additional_msg\"\
+  : \"testtask\", \"task_state\": \"SUBMITTED\", \"pid\":\n  1322, \"additional_msg\"\
   : \"Task is planned to run, please check the status later.\"}''}'\nuser_id: linmao\n"
