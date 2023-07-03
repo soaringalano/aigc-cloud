@@ -1,0 +1,10 @@
+testtask: "task_config: !!python/object/new:task.task_config.BasicTaskConfig\n  dictitems:\n\
+  \    H: '512'\n    W: '512'\n    ckpt: /home/ldm/models/ldm/v1/model.ckpt\n    cluster_id:\
+  \ docker_cluster_0\n    config: /home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\n\
+  \    envvar:\n      SOURCE_HOME: /home/ldm/source/stable-diffusion/\n    n_sample:\
+  \ '9'\n    outdir: /home/ldm/source/stable-diffusion/output/\n    prompt: An astronaut\
+  \ riding a horse on the moon\n    task_goal: generate\n    task_id: testtask\n \
+  \   task_name: testtask\n    task_type: stable_diffusion\n    user_id: linmao\n\
+  \    yaml_content: '{}'\ntask_id: testtask\ntask_result: '{\"content\": b''{\"task_id\"\
+  : \"testtask\", \"task_state\": \"SUBMITTED\", \"pid\":\n  1002, \"additional_msg\"\
+  : \"Task is planned to run, please check the status later.\"}''}'\nuser_id: linmao\n"

@@ -40,7 +40,7 @@ SHELL_STABLE_DIFFUSION_TRAIN = \
     "export NODE_RANK=\"{node_rank}\"\n python -u main.py -t true " \
     "-b {base} --accelerator=\"{accelerator}\" --gpus=\"{gpu_count}\" " \
     "--logger=\"true\" --num_nodes=\"{num_nodes}\""
-SHELL_STABLE_DIFFUSION_GENERATE = "$PYTHON_HOME/python -u scripts/txt2img.py " \
+SHELL_STABLE_DIFFUSION_GENERATE = "python -u scripts/txt2img.py " \
                                   "--prompt \"{prompt}\" --outdir \"{outdir}\" --n_sample \"{n_sample}\" " \
                                   "--H \"{H}\" --W \"{W}\" --ckpt \"{ckpt}\"\n" \
                                   ""
