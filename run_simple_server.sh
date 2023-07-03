@@ -1,7 +1,7 @@
 clear
 
-export SOURCE_HOME=/home/linmao/workspaces/python/soaringalano/cloudservice/
-export SERVER_ADDR=$1
-export SERVER_PORT=$2
+export SOURCE_HOME=$1
+export SERVER_ADDR=$2
+export SERVER_PORT=$3
 
 python simple_server.py
