@@ -8,6 +8,7 @@ class TaskType(Enum):
     stable_diffusion = "stable_diffusion"
     dalle = "dalle"
     chatgpt = "chatgpt"
+    gpt4 = "gpt4";
 
 
 class TaskGoal(Enum):

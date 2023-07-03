@@ -127,7 +127,7 @@ def execute_post_process(task_config: BasicTaskConfig = None):
 
 
 def __execute_upload_cdn(outdir:str, task_id:str):
-    ok, succ_fail = store_dir_images_as_nft(outdir)
+    ok, succ_fail = store_dir_to_ipfs(outdir)
     if ok:
         success: List[NFT] = succ_fail['success']
         fail: List[str] = succ_fail['fail']
