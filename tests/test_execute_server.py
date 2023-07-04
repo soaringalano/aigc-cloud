@@ -79,7 +79,7 @@ def execute_generate():
 
     url = "http://192.168.1.28:8088/newtask"
 
-    seed = random.Random().randint(0, 10000);
+    seed = random.Random().randint(0, 100);
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"20230703215000001\"," \
                 " \"task_goal\": \"generate\", \"task_name\": \"TestGenerate\", \"user_id\": \"linmao\"," \
@@ -87,7 +87,7 @@ def execute_generate():
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\", \"PYTHON_HOME\": \"/root/anaconda3/envs/ldm/bin\"}," \
-                " \"n_sample\": \"1\", \"H\": \"256\", \"W\": \"256\", \"seed\": \"" + str(seed) + "\", "\
+                " \"n_sample\": \"1\", \"H\": \"256\", \"W\": \"256\", \"seed\": " + str(seed) + ", " \
                 " \"config\": \"/home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\"," \
                 " \"yaml_content\": \"{}\"}"
     print(post_data)

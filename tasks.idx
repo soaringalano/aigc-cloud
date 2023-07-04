@@ -3,13 +3,221 @@
   \    cluster_id: docker_cluster_2\n    config: /home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\n\
   \    envvar:\n      PYTHON_HOME: /root/anaconda3/envs/ldm/bin\n      SOURCE_HOME:\
   \ /home/ldm/source/stable-diffusion/\n    n_sample: '1'\n    outdir: /home/ldm/source/stable-diffusion/output/\n\
-  \    prompt: a cyberpunk city with spacecrafts and a giant moon in the sky.\n  \
-  \  seed: '4602'\n    task_goal: generate\n    task_id: '20230703215000001'\n   \
-  \ task_name: TestGenerate\n    task_type: stable_diffusion\n    user_id: linmao\n\
-  \    yaml_content: '{}'\ntask_id: '20230703215000001'\ntask_result: '{\"content\"\
-  : b''{\"task_id\": \"20230703215000001\", \"task_state\": \"TERMINATED\",\n  \"\
-  pid\": 926, \"additional_msg\": \"Task is planned to run, please check the status\
-  \ later.\"}''}'\nuser_id: linmao\n"
+  \    prompt: An astronaut riding a horse on the moon.\n    seed: 5916\n    task_goal:\
+  \ generate\n    task_id: '20230703215000001'\n    task_name: TestGenerate\n    task_type:\
+  \ stable_diffusion\n    user_id: linmao\n    yaml_content: '{}'\ntask_id: '20230703215000001'\n\
+  task_result: '{\"content\": b''<!doctype html>\\n<html lang=en>\\n  <head>\\n  \
+  \  <title>KeyError:\n  \\''seed\\''\\n // Werkzeug Debugger</title>\\n    <link\
+  \ rel=\"stylesheet\" href=\"?__debugger__=yes&amp;cmd=resource&amp;f=style.css\"\
+  >\\n    <link\n  rel=\"shortcut icon\"\\n        href=\"?__debugger__=yes&amp;cmd=resource&amp;f=console.png\"\
+  >\\n    <script\n  src=\"?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js\"\
+  ></script>\\n    <script>\\n      var\n  CONSOLE_MODE = false,\\n          EVALEX\
+  \ = true,\\n          EVALEX_TRUSTED = false,\\n          SECRET\n  = \"DtwsidQ7VR7y1Fsd34zH\"\
+  ;\\n    </script>\\n  </head>\\n  <body style=\"background-color:\n  #fff\">\\n\
+  \    <div class=\"debugger\">\\n<h1>KeyError</h1>\\n<div class=\"detail\">\\n  <p\n\
+  \  class=\"errormsg\">KeyError: &#39;seed&#39;\\n</p>\\n</div>\\n<h2 class=\"traceback\"\
+  >Traceback\n  <em>(most recent call last)</em></h2>\\n<div class=\"traceback\">\\\
+  n  <h3></h3>\\n  <ul><li><div\n  class=\"frame\" id=\"frame-139958161219648\">\\\
+  n  <h4>File <cite class=\"filename\">\"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  </cite>,\\n      line\n  <em class=\"line\">2551</em>,\\n      in <code class=\"\
+  function\">__call__</code></h4>\\n  <div\n  class=\"source library\"><pre class=\"\
+  line before\"><span class=\"ws\">    </span>def\n  __call__(self, environ: dict,\
+  \ start_response: t.Callable) -&gt; t.Any:</pre>\\n<pre\n  class=\"line before\"\
+  ><span class=\"ws\">        </span>&#34;&#34;&#34;The WSGI server\n  calls the Flask\
+  \ application object as the</pre>\\n<pre class=\"line before\"><span\n  class=\"\
+  ws\">        </span>WSGI application. This calls :meth:`wsgi_app`, which can\n \
+  \ be</pre>\\n<pre class=\"line before\"><span class=\"ws\">        </span>wrapped\
+  \ to apply\n  middleware.</pre>\\n<pre class=\"line before\"><span class=\"ws\"\
+  >        </span>&#34;&#34;&#34;</pre>\\n<pre\n  class=\"line current\"><span class=\"\
+  ws\">        </span>return self.wsgi_app(environ,\n  start_response)</pre></div>\\\
+  n</div>\\n\\n<li><div class=\"frame\" id=\"frame-139958160913568\">\\n  <h4>File\n\
+  \  <cite class=\"filename\">\"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  </cite>,\\n      line\n  <em class=\"line\">2531</em>,\\n      in <code class=\"\
+  function\">wsgi_app</code></h4>\\n  <div\n  class=\"source library\"><pre class=\"\
+  line before\"><span class=\"ws\">            </span>try:</pre>\\n<pre\n  class=\"\
+  line before\"><span class=\"ws\">                </span>ctx.push()</pre>\\n<pre\n\
+  \  class=\"line before\"><span class=\"ws\">                </span>response = self.full_dispatch_request()</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>except Exception\
+  \ as e:</pre>\\n<pre\n  class=\"line before\"><span class=\"ws\">              \
+  \  </span>error = e</pre>\\n<pre\n  class=\"line current\"><span class=\"ws\"> \
+  \               </span>response = self.handle_exception(e)</pre>\\n<pre\n  class=\"\
+  line after\"><span class=\"ws\">            </span>except:  # noqa: B001</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">                </span>error =\
+  \ sys.exc_info()[1]</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\">   \
+  \             </span>raise</pre>\\n<pre class=\"line\n  after\"><span class=\"ws\"\
+  >            </span>return response(environ, start_response)</pre>\\n<pre\n  class=\"\
+  line after\"><span class=\"ws\">        </span>finally:</pre></div>\\n</div>\\n\\\
+  n<li><div\n  class=\"frame\" id=\"frame-139958160913680\">\\n  <h4>File <cite class=\"\
+  filename\">\"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  </cite>,\\n      line\n  <em class=\"line\">2528</em>,\\n      in <code class=\"\
+  function\">wsgi_app</code></h4>\\n  <div\n  class=\"source library\"><pre class=\"\
+  line before\"><span class=\"ws\">        </span>ctx\n  = self.request_context(environ)</pre>\\\
+  n<pre class=\"line before\"><span class=\"ws\">        </span>error:\n  t.Optional[BaseException]\
+  \ = None</pre>\\n<pre class=\"line before\"><span class=\"ws\">        </span>try:</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>try:</pre>\\\
+  n<pre class=\"line\n  before\"><span class=\"ws\">                </span>ctx.push()</pre>\\\
+  n<pre class=\"line\n  current\"><span class=\"ws\">                </span>response\
+  \ = self.full_dispatch_request()</pre>\\n<pre\n  class=\"line after\"><span class=\"\
+  ws\">            </span>except Exception as e:</pre>\\n<pre\n  class=\"line after\"\
+  ><span class=\"ws\">                </span>error = e</pre>\\n<pre\n  class=\"line\
+  \ after\"><span class=\"ws\">                </span>response = self.handle_exception(e)</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">            </span>except:  # noqa:\
+  \ B001</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\">                </span>error\
+  \ = sys.exc_info()[1]</pre></div>\\n</div>\\n\\n<li><div\n  class=\"frame\" id=\"\
+  frame-139958160913792\">\\n  <h4>File <cite class=\"filename\">\"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  </cite>,\\n      line\n  <em class=\"line\">1825</em>,\\n      in <code class=\"\
+  function\">full_dispatch_request</code></h4>\\n  <div\n  class=\"source library\"\
+  ><pre class=\"line before\"><span class=\"ws\">            </span>request_started.send(self)</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>rv = self.preprocess_request()</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>if rv is None:</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">                </span>rv = self.dispatch_request()</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">        </span>except Exception\
+  \ as e:</pre>\\n<pre\n  class=\"line current\"><span class=\"ws\">            </span>rv\
+  \ = self.handle_user_exception(e)</pre>\\n<pre\n  class=\"line after\"><span class=\"\
+  ws\">        </span>return self.finalize_request(rv)</pre>\\n<pre\n  class=\"line\
+  \ after\"><span class=\"ws\"></span> </pre>\\n<pre class=\"line after\"><span\n\
+  \  class=\"ws\">    </span>def finalize_request(</pre>\\n<pre class=\"line after\"\
+  ><span\n  class=\"ws\">        </span>self,</pre>\\n<pre class=\"line after\"><span\
+  \ class=\"ws\">        </span>rv:\n  t.Union[ft.ResponseReturnValue, HTTPException],</pre></div>\\\
+  n</div>\\n\\n<li><div\n  class=\"frame\" id=\"frame-139958160913904\">\\n  <h4>File\
+  \ <cite class=\"filename\">\"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  </cite>,\\n      line\n  <em class=\"line\">1823</em>,\\n      in <code class=\"\
+  function\">full_dispatch_request</code></h4>\\n  <div\n  class=\"source library\"\
+  ><pre class=\"line before\"><span class=\"ws\"></span> </pre>\\n<pre\n  class=\"\
+  line before\"><span class=\"ws\">        </span>try:</pre>\\n<pre class=\"line\n\
+  \  before\"><span class=\"ws\">            </span>request_started.send(self)</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>rv = self.preprocess_request()</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>if rv is None:</pre>\\\
+  n<pre\n  class=\"line current\"><span class=\"ws\">                </span>rv = self.dispatch_request()</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">        </span>except Exception\
+  \ as e:</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\">            </span>rv\
+  \ = self.handle_user_exception(e)</pre>\\n<pre\n  class=\"line after\"><span class=\"\
+  ws\">        </span>return self.finalize_request(rv)</pre>\\n<pre\n  class=\"line\
+  \ after\"><span class=\"ws\"></span> </pre>\\n<pre class=\"line after\"><span\n\
+  \  class=\"ws\">    </span>def finalize_request(</pre></div>\\n</div>\\n\\n<li><div\
+  \ class=\"frame\"\n  id=\"frame-139958160914016\">\\n  <h4>File <cite class=\"filename\"\
+  >\"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"</cite>,\\\
+  n      line\n  <em class=\"line\">1799</em>,\\n      in <code class=\"function\"\
+  >dispatch_request</code></h4>\\n  <div\n  class=\"source library\"><pre class=\"\
+  line before\"><span class=\"ws\">            </span>and\n  req.method == &#34;OPTIONS&#34;</pre>\\\
+  n<pre class=\"line before\"><span class=\"ws\">        </span>):</pre>\\n<pre\n\
+  \  class=\"line before\"><span class=\"ws\">            </span>return self.make_default_options_response()</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">        </span># otherwise dispatch\
+  \ to the\n  handler for that endpoint</pre>\\n<pre class=\"line before\"><span class=\"\
+  ws\">        </span>view_args:\n  t.Dict[str, t.Any] = req.view_args  # type: ignore[assignment]</pre>\\\
+  n<pre class=\"line\n  current\"><span class=\"ws\">        </span>return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\"></span> </pre>\\n<pre class=\"\
+  line after\"><span\n  class=\"ws\">    </span>def full_dispatch_request(self) -&gt;\
+  \ Response:</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\">        </span>&#34;&#34;&#34;Dispatches\
+  \ the\n  request and on top of that performs request</pre>\\n<pre class=\"line after\"\
+  ><span\n  class=\"ws\">        </span>pre and postprocessing as well as HTTP exception\
+  \ catching\n  and</pre>\\n<pre class=\"line after\"><span class=\"ws\">        </span>error\
+  \ handling.</pre></div>\\n</div>\\n\\n<li><div\n  class=\"frame\" id=\"frame-139958160914128\"\
+  >\\n  <h4>File <cite class=\"filename\">\"/home/ldm/source/aigc-cloud/simple_client.py\"\
+  </cite>,\\n      line\n  <em class=\"line\">35</em>,\\n      in <code class=\"function\"\
+  >execute_task</code></h4>\\n  <div\n  class=\"source \"><pre class=\"line before\"\
+  ><span class=\"ws\">    </span>else:</pre>\\n<pre\n  class=\"line before\"><span\
+  \ class=\"ws\">        </span># content = flask.json.loads(request.data)</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">        </span>content = request.data</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">    </span>config = BasicTaskConfig()</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">    </span>config.set_params(content)</pre>\\\
+  n<pre\n  class=\"line current\"><span class=\"ws\">    </span>res = execute_local_task(config)</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">    </span>return res.to_json(),\
+  \ 200</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\"></span> </pre>\\n<pre\
+  \ class=\"line after\"><span\n  class=\"ws\"></span> </pre>\\n<pre class=\"line\
+  \ after\"><span class=\"ws\"></span>@cloud_client.route(&#39;/taskstat&#39;,\n \
+  \ methods=[&#39;POST&#39;, &#39;GET&#39;])</pre>\\n<pre class=\"line after\"><span\
+  \ class=\"ws\"></span>def\n  check_state(self) -&gt; (str, int):</pre></div>\\n</div>\\\
+  n\\n<li><div class=\"frame\"\n  id=\"frame-139958160914240\">\\n  <h4>File <cite\
+  \ class=\"filename\">\"/home/ldm/source/aigc-cloud/task/task_executor.py\"</cite>,\\\
+  n      line\n  <em class=\"line\">107</em>,\\n      in <code class=\"function\"\
+  >execute_local_task</code></h4>\\n  <div\n  class=\"source \"><pre class=\"line\
+  \ before\"><span class=\"ws\"></span> </pre>\\n<pre class=\"line\n  before\"><span\
+  \ class=\"ws\"></span>def execute_local_task(task_config: BasicTaskConfig\n  = None)\
+  \ -&gt; TaskResult:</pre>\\n<pre class=\"line before\"><span class=\"ws\">    </span>if\n\
+  \  task_config is None:</pre>\\n<pre class=\"line before\"><span class=\"ws\"> \
+  \       </span>return\n  TaskResult(TaskState.NOTEXIST, task_id=&#34;invalid task\
+  \ id&#34;)</pre>\\n<pre class=\"line\n  before\"><span class=\"ws\">    </span>envvar\
+  \ = task_config[BasicTaskConfig.environment_variables]</pre>\\n<pre\n  class=\"\
+  line current\"><span class=\"ws\">    </span>local_executable_shell = select_local_executable_shell(task_config)</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">    </span>print(local_executable_shell)</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">    </span>with subprocess.Popen(local_executable_shell,</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">                          </span>shell=True,</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">                          </span>#\
+  \ stdout=subprocess.PIPE,</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\"\
+  >                          </span># stderr=subprocess.PIPE,</pre></div>\\n</div>\\\
+  n\\n<li><div\n  class=\"frame\" id=\"frame-139958160914352\">\\n  <h4>File <cite\
+  \ class=\"filename\">\"/home/ldm/source/aigc-cloud/task/task_executor.py\"</cite>,\\\
+  n      line\n  <em class=\"line\">167</em>,\\n      in <code class=\"function\"\
+  >select_local_executable_shell</code></h4>\\n  <div\n  class=\"source \"><pre class=\"\
+  line before\"><span class=\"ws\">            </span>outdir\n  = config[StableDiffusionGenerateConfig.outdir]</pre>\\\
+  n<pre class=\"line before\"><span\n  class=\"ws\">            </span>n_sample =\
+  \ config[StableDiffusionGenerateConfig.n_sample]</pre>\\n<pre\n  class=\"line before\"\
+  ><span class=\"ws\">            </span>H = config[StableDiffusionGenerateConfig.H]</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span>W = config[StableDiffusionGenerateConfig.W]</pre>\\\
+  n<pre\n  class=\"line before\"><span class=\"ws\">            </span># config =\
+  \ config[StableDiffusionGenerateConfig.config]</pre>\\n<pre\n  class=\"line current\"\
+  ><span class=\"ws\">            </span>execute_sh = SHELL_STABLE_DIFFUSION_GENERATE.format(prompt=prompt,</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">                              \
+  \                                  </span>outdir=outdir,</pre>\\n<pre\n  class=\"\
+  line after\"><span class=\"ws\">                                               \
+  \                 </span>n_sample=n_sample,</pre>\\n<pre\n  class=\"line after\"\
+  ><span class=\"ws\">                                                           \
+  \     </span>H=H,</pre>\\n<pre\n  class=\"line after\"><span class=\"ws\">     \
+  \                                                           </span>W=W,</pre>\\\
+  n<pre\n  class=\"line after\"><span class=\"ws\">                              \
+  \                                  </span>#\n  config=config,</pre></div>\\n</div>\\\
+  n</ul>\\n  <blockquote>KeyError: &#39;seed&#39;\\n</blockquote>\\n</div>\\n\\n<div\n\
+  \  class=\"plain\">\\n    <p>\\n      This is the Copy/Paste friendly version of\
+  \ the traceback.\\n    </p>\\n    <textarea\n  cols=\"50\" rows=\"10\" name=\"code\"\
+  \ readonly>Traceback (most recent call last):\\n  File\n  &#34;/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py&#34;,\
+  \ line\n  2551, in __call__\\n    return self.wsgi_app(environ, start_response)\\\
+  n  File &#34;/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py&#34;,\n\
+  \  line 2531, in wsgi_app\\n    response = self.handle_exception(e)\\n  File &#34;/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py&#34;,\n\
+  \  line 2528, in wsgi_app\\n    response = self.full_dispatch_request()\\n  File\
+  \ &#34;/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py&#34;,\n\
+  \  line 1825, in full_dispatch_request\\n    rv = self.handle_user_exception(e)\\\
+  n  File\n  &#34;/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py&#34;,\
+  \ line\n  1823, in full_dispatch_request\\n    rv = self.dispatch_request()\\n \
+  \ File &#34;/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py&#34;,\n\
+  \  line 1799, in dispatch_request\\n    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)\\\
+  n  File\n  &#34;/home/ldm/source/aigc-cloud/simple_client.py&#34;, line 35, in execute_task\\\
+  n    res\n  = execute_local_task(config)\\n  File &#34;/home/ldm/source/aigc-cloud/task/task_executor.py&#34;,\n\
+  \  line 107, in execute_local_task\\n    local_executable_shell = select_local_executable_shell(task_config)\\\
+  n  File\n  &#34;/home/ldm/source/aigc-cloud/task/task_executor.py&#34;, line 167,\
+  \ in select_local_executable_shell\\n    execute_sh\n  = SHELL_STABLE_DIFFUSION_GENERATE.format(prompt=prompt,\\\
+  nKeyError: &#39;seed&#39;\\n</textarea>\\n</div>\\n<div\n  class=\"explanation\"\
+  >\\n  The debugger caught an exception in your WSGI application.  You\n  can now\\\
+  n  look at the traceback which led to the error.  <span class=\"nojavascript\">\\\
+  n  If\n  you enable JavaScript you can also use additional features such as code\\\
+  n  execution\n  (if the evalex feature is enabled), automatic pasting of the\\n\
+  \  exceptions and much\n  more.</span>\\n</div>\\n      <div class=\"footer\">\\\
+  n        Brought to you by <strong\n  class=\"arthur\">DON\\''T PANIC</strong>,\
+  \ your\\n        friendly Werkzeug powered traceback\n  interpreter.\\n      </div>\\\
+  n    </div>\\n\\n    <div class=\"pin-prompt\">\\n      <div\n  class=\"inner\"\
+  >\\n        <h3>Console Locked</h3>\\n        <p>\\n          The console\n  is\
+  \ locked and needs to be unlocked by entering the PIN.\\n          You can find\n\
+  \  the PIN printed out on the standard output of your\\n          shell that runs\
+  \ the\n  server.\\n        <form>\\n          <p>PIN:\\n            <input type=text\
+  \ name=pin\n  size=14>\\n            <input type=submit name=btn value=\"Confirm\
+  \ Pin\">\\n        </form>\\n      </div>\\n    </div>\\n  </body>\\n</html>\\n\\\
+  n<!--\\n\\nTraceback\n  (most recent call last):\\n  File \"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  ,\n  line 2551, in __call__\\n    return self.wsgi_app(environ, start_response)\\\
+  n  File\n  \"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  , line 2531,\n  in wsgi_app\\n    response = self.handle_exception(e)\\n  File \"\
+  /root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\",\n  line 2528,\
+  \ in wsgi_app\\n    response = self.full_dispatch_request()\\n  File \"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  ,\n  line 1825, in full_dispatch_request\\n    rv = self.handle_user_exception(e)\\\
+  n  File\n  \"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\"\
+  , line 1823,\n  in full_dispatch_request\\n    rv = self.dispatch_request()\\n \
+  \ File \"/root/anaconda3/envs/ldm/lib/python3.8/site-packages/flask/app.py\",\n\
+  \  line 1799, in dispatch_request\\n    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)\\\
+  n  File\n  \"/home/ldm/source/aigc-cloud/simple_client.py\", line 35, in execute_task\\\
+  n    res\n  = execute_local_task(config)\\n  File \"/home/ldm/source/aigc-cloud/task/task_executor.py\"\
+  ,\n  line 107, in execute_local_task\\n    local_executable_shell = select_local_executable_shell(task_config)\\\
+  n  File\n  \"/home/ldm/source/aigc-cloud/task/task_executor.py\", line 167, in select_local_executable_shell\\\
+  n    execute_sh\n  = SHELL_STABLE_DIFFUSION_GENERATE.format(prompt=prompt,\\nKeyError:\
+  \ \\''seed\\''\\n\\n\\n-->\\n''}'\nuser_id: linmao\n"
 testtask: "task_config: !!python/object/new:task.task_config.BasicTaskConfig\n  dictitems:\n\
   \    H: '512'\n    W: '512'\n    ckpt: /home/ldm/models/ldm/v1/model.ckpt\n    cluster_id:\
   \ docker_cluster_0\n    config: /home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\n\
