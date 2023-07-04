@@ -1,3 +1,15 @@
+'20230703215000001': "task_config: !!python/object/new:task.task_config.BasicTaskConfig\n\
+  \  dictitems:\n    H: '256'\n    W: '256'\n    ckpt: /home/ldm/models/ldm/v1/model.ckpt\n\
+  \    cluster_id: docker_cluster_2\n    config: /home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\n\
+  \    envvar:\n      PYTHON_HOME: /root/anaconda3/envs/ldm/bin\n      SOURCE_HOME:\
+  \ /home/ldm/source/stable-diffusion/\n    n_sample: '1'\n    outdir: /home/ldm/source/stable-diffusion/output/\n\
+  \    prompt: a cyberpunk city with spacecrafts and a giant moon in the sky.\n  \
+  \  seed: '4602'\n    task_goal: generate\n    task_id: '20230703215000001'\n   \
+  \ task_name: TestGenerate\n    task_type: stable_diffusion\n    user_id: linmao\n\
+  \    yaml_content: '{}'\ntask_id: '20230703215000001'\ntask_result: '{\"content\"\
+  : b''{\"task_id\": \"20230703215000001\", \"task_state\": \"TERMINATED\",\n  \"\
+  pid\": 926, \"additional_msg\": \"Task is planned to run, please check the status\
+  \ later.\"}''}'\nuser_id: linmao\n"
 testtask: "task_config: !!python/object/new:task.task_config.BasicTaskConfig\n  dictitems:\n\
   \    H: '512'\n    W: '512'\n    ckpt: /home/ldm/models/ldm/v1/model.ckpt\n    cluster_id:\
   \ docker_cluster_0\n    config: /home/ldm/source/stable-diffusion/models/ldm/cin256/config.yaml\n\
