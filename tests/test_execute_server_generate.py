@@ -83,7 +83,7 @@ def execute_generate():
 
     post_data = "{\"task_type\" : \"stable_diffusion\", \"task_id\" : \"20230704000000001\"," \
                 " \"task_goal\": \"generate\", \"task_name\": \"TestGenerate\", \"user_id\": \"linmao\"," \
-                " \"cluster_id\": \"docker_cluster_2\", \"prompt\": \"a cyberpunk city with spacecrafts and a giant moon in the sky, an droid standing on a steel bridge.\"," \
+                " \"cluster_id\":++-+-- \"docker_cluster_2\", \"prompt\": \"a cyberpunk city with spacecrafts and a giant moon in the sky, a droid standing on a steel bridge.\"," \
                 " \"ckpt\": \"/home/ldm/models/ldm/v1/model.ckpt\"," \
                 " \"outdir\": \"/home/ldm/source/stable-diffusion/output/\", " \
                 " \"envvar\": {\"SOURCE_HOME\": \"/home/ldm/source/stable-diffusion/\", \"PYTHON_HOME\": \"/root/anaconda3/envs/ldm/bin\"}," \
@@ -142,8 +142,8 @@ def execute_login():
 
 # execute_login()
 
-execute_train()
+# execute_train()
 
-# execute_generate()
+execute_generate()
 
 # execute_task_status()
